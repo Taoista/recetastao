@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recetastao/models/type_foods.dart';
 import 'package:recetastao/widgets/card_food.dart';
+import 'package:recetastao/widgets/search_main.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -35,37 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Material App Bar'),
+          title: const Text('Recetas Tao'),
         ),
         body: Column(
           children: [
-            Row(children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: TextField(
-                      // controller: _searchController,
-                      decoration: InputDecoration(
-                        hintText: 'Buscar...',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      ),
-                      // onSubmitted: (_) => _searchFoods(),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                ElevatedButton(
-                  onPressed: (){},
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    shape: const CircleBorder(),
-                  ),
-                  child: const Icon(Icons.search),
-                ),
-              ],),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SearchMain(),
+            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
