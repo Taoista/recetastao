@@ -22,14 +22,16 @@ class CardFood extends StatelessWidget {
             height: 200,
           ),
           Container(
-            color: Colors.black45, // capa oscura para que el texto blanco se vea
-            alignment: Alignment.center,
-            height: 200,
+            height:200,
+            color: Colors.black54, // capa oscura para que el texto blanco se vea
+            alignment: Alignment.bottomCenter,
+            padding: const EdgeInsets.only(bottom: 10),
             child: Text(
               title,
+               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 24,
+                fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
             ),
