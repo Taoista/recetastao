@@ -5,6 +5,8 @@ import 'package:recetastao/widgets/search_main.dart';
 
 
 class HomeScreen extends StatefulWidget {
+  static const String name = "home_screen";
+
   const HomeScreen({super.key});
 
   @override
@@ -55,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: listTypeFoods.map((food) {
                     // final String image = typeFoods.firstWhere((e) => e['id'] == food.id)['img'];
                     return CardFood(
+                      idFood: food.id,
                       img: food.img,
                       title: food.nombre,
                     );
