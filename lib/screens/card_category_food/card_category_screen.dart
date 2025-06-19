@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:recetastao/models/card_food.dart';
+import 'package:recetastao/widgets/card_food.dart';
 import 'package:recetastao/models/foods.dart';
 
 
 
-class CardFoodScreen extends StatefulWidget {
+class CardCategoryScreen extends StatefulWidget {
 
-  static const String name = "card_food_screen";
+  static const String name = "card_food_category_screen";
 
   final String idFood;
 
-  const CardFoodScreen({super.key, required this.idFood});
+  const CardCategoryScreen({super.key, required this.idFood});
 
   @override
-  State<CardFoodScreen> createState() => _CardFoodScreenState();
+  State<CardCategoryScreen> createState() => _CardCategoryScreenState();
 }
 
-class _CardFoodScreenState extends State<CardFoodScreen> {
+class _CardCategoryScreenState extends State<CardCategoryScreen> {
 
   List<Foods> foodsList = getFoods();
 
@@ -50,7 +50,7 @@ class _CardFoodScreenState extends State<CardFoodScreen> {
           mainAxisSpacing: 20,
           crossAxisSpacing: 10,
           childAspectRatio: 0.6, // Ajusta según el tamaño del Card
-          children: filteredFoods.map((food) => CardFood()).toList(),
+          children: filteredFoods.map((food) => CardFood(food:food)).toList(),
         ),
       ),
         );

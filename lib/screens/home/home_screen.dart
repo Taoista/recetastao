@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recetastao/models/type_foods.dart';
-import 'package:recetastao/widgets/card_food.dart';
+import 'package:recetastao/widgets/category_food.dart';
 import 'package:recetastao/widgets/search_main.dart';
 
 
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   childAspectRatio: 2/2,
                   children: listTypeFoods.map((food) {
                     // final String image = typeFoods.firstWhere((e) => e['id'] == food.id)['img'];
-                    return CardFood(
+                    return CategoryFood(
                       idFood: food.id,
                       img: food.img,
                       title: food.nombre,
