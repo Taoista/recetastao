@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recetastao/models/foods.dart';
 
 class CardFood extends StatelessWidget {
@@ -82,14 +83,20 @@ class CardFood extends StatelessWidget {
         ),
 
         // Imagen circular que sobresale arriba
+       
         Positioned(
           top: 0,
           left: 30,
           right: 30,
-          child: CircleAvatar(
-            radius: 80,
-            backgroundImage: AssetImage(
-                'assets/images/foods/food_01.png'), // pon tu imagen aquí
+          child: InkWell(
+            onTap: (){
+              context.push("/food/${food.id}");
+            },
+            child: CircleAvatar(
+              radius: 80,
+              backgroundImage: AssetImage(
+                  'assets/images/foods/food_01.png'), // pon tu imagen aquí
+            ),
           ),
         ),
 

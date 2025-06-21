@@ -18,16 +18,16 @@ class Foods {
       });
 
     factory Foods.fromMap(Map<String, dynamic> map) {
-    return Foods(
-      id: map['id'],
-      estado: map['estado'],
-      idType: map['id_type'],
-      name: map['name'],
-      top: map['top'],
-      time: map['time'],
-      img: map['img'],
-    );
-  }
+      return Foods(
+        id: map['id'],
+        estado: map['estado'],
+        idType: map['id_type'],
+        name: map['name'],
+        top: map['top'],
+        time: map['time'],
+        img: map['img'],
+      );
+    }
 
   Map<String, dynamic> toMap() {
     return {
