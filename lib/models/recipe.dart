@@ -46,9 +46,10 @@ class Recipe {
           .map((item) => Ingredient.fromMap(item))
           .toList(),
       steps: (map['steps'] as List<dynamic>)
-        .map((item) => StepRecipe.fromMap(item as Map<String, dynamic>)) // Aquí pasas a objeto
-        .toList(),
-  );
+          .map((item) => StepRecipe.fromMap(
+              item as Map<String, dynamic>)) // Aquí pasas a objeto
+          .toList(),
+    );
   }
 
   Map<String, dynamic> toMap() {
@@ -98,7 +99,7 @@ class Ingredient {
   }
 }
 
-class StepRecipe{
+class StepRecipe {
   final int id;
   final String title;
   final String texto;
@@ -120,7 +121,6 @@ class StepRecipe{
       'texto': texto,
     };
   }
-
 }
 
 List<Recipe> getRecipeFoods() {
@@ -325,6 +325,82 @@ const List<Map<String, dynamic>> foodsLista = [
         "title": "Decorar y servir",
         "texto":
             "Termina decorando con perejil picado fresco para darle color y sirve inmediatamente."
+      }
+    ]
+  },
+  {
+    'id': 3,
+    "id_food": 1,
+    "top": 5.0,
+    "name": "Ensalada Frutal con Higos",
+    "description":
+        "efrescante ensalada de frutas frescas con higos dulces, ideal como entrada ligera o aperitivo saludable.",
+    "imageUrl": "assets/images/food_headers/01/food_header.png",
+    "personas": 4,
+    "icon": "food_01.png",
+    "time": 10,
+    "tipo": "Entrada Aperitivo",
+    "origen": "Española",
+    "ingredients": [
+      {
+        "ingrediente": "Higos o fruta de temporada",
+        "cantidad": "2 o 3 unidades",
+        "icon": "🍈"
+      },
+      {
+        "ingrediente": "Láminas de cecina",
+        "cantidad": "2 o 3 láminas",
+        "icon": "🥩"
+      },
+      {
+        "ingrediente": "Queso ricota o queso cremoso",
+        "cantidad": "2 cucharadas",
+        "icon": "🧀"
+      },
+      {
+        "ingrediente": "Un puñado de canónigos o rúcula",
+        "cantidad": "50 gramos",
+        "icon": "🥬"
+      },
+      {
+        "ingrediente": "Pistachos tostados",
+        "cantidad": "5 gramos",
+        "icon": "🥜"
+      },
+      {"ingrediente": "Pesto", "cantidad": "1 cucharada", "icon": "🌿"},
+    ],
+    "steps": [
+      {
+        "id": 1,
+        "title": "Cortar los higos",
+        "img": "",
+        "texto":
+            "Corta los higos o la fruta de temporada en trozos del tamaño de un bocado."
+      },
+      {
+        "id": 2,
+        "title": "Preparar el plato",
+        "img": "",
+        "texto": "Prepara una base de queso ricota sobre el plato."
+      },
+      {
+        "id": 3,
+        "title": "Preparar la rúcula",
+        "img": "",
+        "texto": "Agrega la rúcula sobre la base de queso."
+      },
+      {
+        "id": 4,
+        "title": "Montar los higos, cecina y pistachos",
+        "img": "",
+        "texto":
+            "Añade los higos, la cecina y los pistachos sobre la preparación."
+      },
+      {
+        "id": 5,
+        "title": "Agregar el aderezo",
+        "img": "",
+        "texto": "Agrega el aderezo de pesto al gusto."
       }
     ]
   },

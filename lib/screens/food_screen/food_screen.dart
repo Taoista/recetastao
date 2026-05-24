@@ -17,7 +17,7 @@ class FoodScreen extends StatefulWidget {
 }
 
 class _FoodScreenState extends State<FoodScreen> {
-  bool isLoading =false;
+  bool isLoading = false;
   List<Recipe> listFood = getRecipeFoods();
   List<Ingredient> ingredients = [];
   List<StepRecipe> stepsList = [];
@@ -28,12 +28,21 @@ class _FoodScreenState extends State<FoodScreen> {
     final List<Recipe> lista = getRecipeFoods();
 
     setState(() {
-      listFood = lista.where((recipe) => recipe.idPlato == int.parse(widget.idFood)).toList();
-      ingredients = listFood.first.ingredients;
-      stepsList = listFood.first.steps;
-      
-      for (var i = 0; i < stepsList.length; i++) {
-        print(stepsList[i].title);
+      print("entrando a la consola");
+
+      listFood = lista
+          .where((recipe) => recipe.idPlato == int.parse(widget.idFood))
+          .toList();
+
+      if (listFood.isNotEmpty) {
+        ingredients = listFood.first.ingredients;
+        stepsList = listFood.first.steps;
+
+        for (var i = 0; i < stepsList.length; i++) {
+          print(stepsList[i].title);
+        }
+      } else {
+        print("No se encontró la receta");
       }
 
       isLoading = true;
