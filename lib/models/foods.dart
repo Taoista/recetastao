@@ -50,7 +50,7 @@ const List<Map<String, dynamic>> foodsFinalista = [
     'id': 1,
     'estado': 1,
     'id_type': 1,
-    'name': 'Ensalada Frutal con Higos222',
+    'name': 'Ensalada Frutal con Higos',
     "top": 1.2,
     "time": "20",
     "img": "assets/images/food_headers/01/food_01.png",
