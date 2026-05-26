@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recetastao/models/recipe.dart';
 import 'package:recetastao/screens/food_screen/header_foods.dart';
 import 'package:recetastao/screens/food_screen/ingredients_list.dart';
@@ -73,7 +74,7 @@ class _FoodScreenState extends State<FoodScreen> {
       body: isLoading ?  ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         children: [
-          // ? header de la pantalla
+          // ? header de la pantalla o banner de la receta
           HeaderFoods(recipe: listFood.first),
           const SizedBox(height: 10),
           Text(
@@ -81,9 +82,10 @@ class _FoodScreenState extends State<FoodScreen> {
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 5),
-          Text("${listFood.first.personas} Personas", style: TextStyle(color: Colors.grey)),
           const SizedBox(height: 10),
-          PersonData(),
+          // ?
+          // TODO: aun no termino que es lo que quiero hacer
+          // PersonData(),
           const SizedBox(height: 20),
           Row(
             children: [
@@ -92,26 +94,28 @@ class _FoodScreenState extends State<FoodScreen> {
                   onPressed: () {},
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                  child: const Text("Ingrident"),
+                  child: const Text("Ingredientes"),
                 ),
               ),
               const SizedBox(width: 10),
               Expanded(
                 child: OutlinedButton(
-                  onPressed: () {},
-                  child: const Text("Procedure"),
+                  onPressed: () {
+                    context.push("/preparation/${widget.idFood}");
+                  },
+                  child: const Text("Preparación"),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 20),
           Row(
-            children: const [
-              Icon(Icons.restaurant_menu_outlined),
-              SizedBox(width: 5),
-              Text("1 serve"),
-              Spacer(),
-              Text("10 Items"),
+            children: [
+              const Icon(Icons.restaurant_menu_outlined),
+              const SizedBox(width: 5),
+              Text("${listFood.first.personas} Servicios"),
+              const Spacer(),
+              Text("${ingredients.length} Ingredientes"),
             ],
           ),
           const SizedBox(height: 20),
@@ -129,7 +133,7 @@ class _FoodScreenState extends State<FoodScreen> {
           }).toList(),
         ],
         
-      ): Container(child: Center(child: Text('cargando'),),),
+      ): Center(child: Text('cargando'),),
     );
   }
 }

@@ -95,7 +95,7 @@ class CardFood extends StatelessWidget {
             child: CircleAvatar(
               radius: 80,
               backgroundImage: AssetImage(
-                  'assets/images/food_headers/01/food_01.png'), // pon tu imagen aquí
+                  food.img), // pon tu imagen aquí
             ),
           ),
         ),

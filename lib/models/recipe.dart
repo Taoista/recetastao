@@ -102,14 +102,16 @@ class Ingredient {
 class StepRecipe {
   final int id;
   final String title;
+  final String img;
   final String texto;
 
-  StepRecipe({required this.id, required this.title, required this.texto});
+  StepRecipe({required this.id, required this.title, required this.img, required this.texto});
 
   factory StepRecipe.fromMap(Map<String, dynamic> map) {
     return StepRecipe(
       id: map['id'] as int,
       title: map['title'] as String,
+      img: map['img'] as String,
       texto: map['texto'] as String,
     );
   }
@@ -169,60 +171,70 @@ const List<Map<String, dynamic>> foodsLista = [
       {
         "id": 1,
         "title": "Sofreír la cebolla",
+        "img": "assets/images/food_headers/01/step_01.png",
         "texto":
             "Pica la cebolla morada finamente y sofríela en una sartén amplia con un poco de aceite a fuego medio hasta que esté transparente y comience a tomar color."
       },
       {
         "id": 2,
         "title": "Agregar los champiñones",
+        "img": "assets/images/steps/step_02.png",
         "texto":
             "Incorpora los champiñones picados y cocina hasta que suelten su agua y reduzcan su tamaño."
       },
       {
         "id": 3,
         "title": "Incorporar el ajo",
+        "img": "assets/images/steps/step_03.png",
         "texto":
             "Agrega el ajo picado y deja que se cocine unos minutos para que libere su sabor."
       },
       {
         "id": 4,
         "title": "Agregar el arroz y la mantequilla",
+        "img": "assets/images/steps/step_04.png",
         "texto":
             "Vierte el arroz y remueve bien para que absorba los sabores. Añade la mantequilla y deja que se derrita por completo."
       },
       {
         "id": 5,
         "title": "Desglasar con vino blanco",
+        "img": "assets/images/steps/step_05.png",
         "texto":
             "Agrega el vino blanco y cocina unos minutos hasta que se evapore el alcohol y el líquido reduzca."
       },
       {
         "id": 6,
         "title": "Cocinar el arroz",
+        "img": "assets/images/steps/step_06.png",
         "texto":
             "Vierte un vaso de agua y deja que el arroz se cocine a fuego lento, removiendo de vez en cuando para que quede cremoso."
       },
       {
         "id": 7,
         "title": "Agregar la crema y sazonar",
+        "img": "assets/images/steps/step_07.png",
         "texto":
             "Cuando el arroz esté casi listo, incorpora la crema, sal y pimienta al gusto. Mezcla bien."
       },
       {
         "id": 8,
         "title": "Derretir el queso rallado",
+        "img": "assets/images/steps/step_08.png", 
         "texto":
             "Añade el queso rallado y remueve hasta que se funda y el risotto tenga una textura suave y cremosa."
       },
       {
         "id": 9,
         "title": "Emplatado",
+        "img": "assets/images/steps/step_01.png",
         "texto":
             "Sirve el risotto en un plato hondo y espolvorea más queso rallado por encima. Coloca una bola de queso mozzarella y rocía con tu aceite favorito."
       },
       {
         "id": 10,
         "title": "Decorar y servir",
+        "img": "assets/images/steps/step_01.png",
         "texto":
             "Termina decorando con perejil picado fresco para darle color y sirve inmediatamente."
       }
@@ -269,60 +281,70 @@ const List<Map<String, dynamic>> foodsLista = [
       {
         "id": 1,
         "title": "Sofreír la cebolla",
+        "img": "assets/images/steps/step_01.png",
         "texto":
             "Pica la cebolla morada finamente y sofríela en una sartén amplia con un poco de aceite a fuego medio hasta que esté transparente y comience a tomar color."
       },
       {
         "id": 2,
         "title": "Agregar los champiñones",
+        "img": "assets/images/steps/step_01.png",
         "texto":
             "Incorpora los champiñones picados y cocina hasta que suelten su agua y reduzcan su tamaño."
       },
       {
         "id": 3,
         "title": "Incorporar el ajo",
+        "img": "assets/images/steps/step_01.png", 
         "texto":
             "Agrega el ajo picado y deja que se cocine unos minutos para que libere su sabor."
       },
       {
         "id": 4,
         "title": "Agregar el arroz y la mantequilla",
+        "img": "assets/images/steps/step_01.png",
         "texto":
             "Vierte el arroz y remueve bien para que absorba los sabores. Añade la mantequilla y deja que se derrita por completo."
       },
       {
         "id": 5,
         "title": "Desglasar con vino blanco",
+        "img": "assets/images/steps/step_01.png",
         "texto":
             "Agrega el vino blanco y cocina unos minutos hasta que se evapore el alcohol y el líquido reduzca."
       },
       {
         "id": 6,
         "title": "Cocinar el arroz",
+        "img": "assets/images/steps/step_01.png",
         "texto":
             "Vierte un vaso de agua y deja que el arroz se cocine a fuego lento, removiendo de vez en cuando para que quede cremoso."
       },
       {
         "id": 7,
         "title": "Agregar la crema y sazonar",
+        "img": "assets/images/steps/step_01.png",
         "texto":
             "Cuando el arroz esté casi listo, incorpora la crema, sal y pimienta al gusto. Mezcla bien."
       },
       {
         "id": 8,
         "title": "Derretir el queso rallado",
+        "img": "assets/images/steps/step_01.png",
         "texto":
             "Añade el queso rallado y remueve hasta que se funda y el risotto tenga una textura suave y cremosa."
       },
       {
         "id": 9,
         "title": "Emplatado",
+        "img": "assets/images/steps/step_01.png",
         "texto":
             "Sirve el risotto en un plato hondo y espolvorea más queso rallado por encima. Coloca una bola de queso mozzarella y rocía con tu aceite favorito."
       },
       {
         "id": 10,
         "title": "Decorar y servir",
+        "img": "assets/images/steps/step_01.png",
         "texto":
             "Termina decorando con perejil picado fresco para darle color y sirve inmediatamente."
       }
@@ -373,33 +395,33 @@ const List<Map<String, dynamic>> foodsLista = [
       {
         "id": 1,
         "title": "Cortar los higos",
-        "img": "",
+        "img": "assets/images/food_headers/01/step_01.png",
         "texto":
             "Corta los higos o la fruta de temporada en trozos del tamaño de un bocado."
       },
       {
         "id": 2,
         "title": "Preparar el plato",
-        "img": "",
+        "img": "assets/images/food_headers/01/step_02.png",
         "texto": "Prepara una base de queso ricota sobre el plato."
       },
       {
         "id": 3,
         "title": "Preparar la rúcula",
-        "img": "",
+        "img": "assets/images/food_headers/01/step_03.png",
         "texto": "Agrega la rúcula sobre la base de queso."
       },
       {
         "id": 4,
         "title": "Montar los higos, cecina y pistachos",
-        "img": "",
+        "img": "assets/images/food_headers/01/step_04.png",
         "texto":
             "Añade los higos, la cecina y los pistachos sobre la preparación."
       },
       {
         "id": 5,
         "title": "Agregar el aderezo",
-        "img": "",
+        "img": "assets/images/food_headers/01/step_05.png",
         "texto": "Agrega el aderezo de pesto al gusto."
       }
     ]
