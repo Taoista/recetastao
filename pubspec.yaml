@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/icons/
     - assets/images/wallpapers/
     - assets/images/foods/
     - assets/images/food_headers/

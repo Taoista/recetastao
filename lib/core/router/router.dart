@@ -7,7 +7,7 @@ import 'package:recetastao/screens/preparation/preparation_screen.dart';
 import 'package:recetastao/screens/start/start_scree.dart';
 
 appRouter() {
-  return GoRouter(initialLocation: "/start", routes: [
+  return GoRouter(initialLocation: "/home", routes: [
     GoRoute(
       path: "/start",
       name: StartScreen.name,

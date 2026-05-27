@@ -23,7 +23,7 @@ class StartScreen extends StatelessWidget {
           /// Dark overlay
           Positioned.fill(
             child: Container(
-              color: Colors.black.withOpacity(0.35),
+              color: Colors.black.withValues(alpha: 0.35),
             ),
           ),
 
@@ -104,7 +104,8 @@ class StartScreen extends StatelessWidget {
                     ),
                   ),
 
-                  /// BUTTONS BOTTOM
+                  // ? BUTTONS BOTTOM
+                  // ? boton para iniciar la app
                   Column(
                     children: [
                       SizedBox(
@@ -131,6 +132,7 @@ class StartScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 16),
+                      // ? boton iniciar session
                       SizedBox(
                         width: double.infinity,
                         height: 58,
