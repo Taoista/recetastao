@@ -64,4 +64,13 @@ const List<Map<String, dynamic>> foodsFinalista = [
     "time": "12",
     "img": "asdadsa,jpg",
   },
+  {
+    'id': 3,
+    'estado': 1,
+    'id_type': 2,
+    'name': 'plato ',
+    "top": 1.2,
+    "time": "12",
+    "img": "asdadsa,jpg",
+  },
 ];

@@ -37,7 +37,8 @@ List<TypeFood> getTypeFoods() {
 const List<Map<String, dynamic>> typeFoods = [
   { 'id': 1, 'estado': 1, 'nombre': 'Entradas / Aperitivos', 'img': 'assets/images/01.jpg' },
   { 'id': 2, 'estado': 1, 'nombre': 'Platos principales', 'img': 'assets/images/02.jpg' },
-  // { 'id': 3, 'estado': 1, 'nombre': 'Acompañamientos / Guarniciones', 'img': 'assets/images/03.jpg' },
+  { 'id': 3, 'estado': 1, 'nombre': 'Platos principales', 'img': 'assets/images/02.jpg' },
+  { 'id': 4, 'estado': 1, 'nombre': 'Acompañamientos / Guarniciones', 'img': 'assets/images/03.jpg' },
   // { 'id': 4, 'estado': 1, 'nombre': 'Ensaladas', 'img': 'assets/images/04.jpg' },
   // { 'id': 5, 'estado': 1, 'nombre': 'Sopas y caldos', 'img': 'assets/images/05.jpg' },
   // { 'id': 6, 'estado': 1, 'nombre': 'Postres', 'img': 'assets/images/06.jpg' },

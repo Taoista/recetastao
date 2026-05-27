@@ -1,6 +1,8 @@
 class Recipe {
   final int id;
   final int idPlato;
+  final bool state;
+  final bool featured;
   final double top;
   final String name;
   final String description;
@@ -16,6 +18,8 @@ class Recipe {
   Recipe({
     required this.id,
     required this.idPlato,
+    required this.state,
+    required this.featured,
     required this.top,
     required this.name,
     required this.description,
@@ -33,6 +37,8 @@ class Recipe {
     return Recipe(
       id: map['id'],
       idPlato: map['id_food'],
+      state: map['state'] == 1 ? true : false,
+      featured: map['featured'] == 1 ? true : false,
       top: (map['top'] as num).toDouble(),
       name: map['name'],
       description: map['description'],
@@ -133,6 +139,8 @@ const List<Map<String, dynamic>> foodsLista = [
   {
     'id': 1,
     "id_food": 2,
+    "state": 1,
+    "featured": 0,
     "top": 5.0,
     "name": "Champiñones cremosos con arroz",
     "description": "Delicious dish with a unique flavor.",
@@ -243,6 +251,8 @@ const List<Map<String, dynamic>> foodsLista = [
   {
     'id': 2,
     "id_food": 2,
+    "state": 1,
+    "featured": 0,
     "top": 5.0,
     "name": "Champiñones cremosos con arroz",
     "description": "Delicious dish with a unique flavor.",
@@ -353,6 +363,8 @@ const List<Map<String, dynamic>> foodsLista = [
   {
     'id': 3,
     "id_food": 1,
+    "state": 1,
+    "featured": 1,
     "top": 5.0,
     "name": "Ensalada Frutal con Higos",
     "description":
