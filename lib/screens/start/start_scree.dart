@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recetastao/core/theme/app_colors.dart';
 
 class StartScreen extends StatelessWidget {
@@ -110,7 +111,9 @@ class StartScreen extends StatelessWidget {
                         width: double.infinity,
                         height: 58,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.push("/home");
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.primary,
                             shape: RoundedRectangleBorder(
