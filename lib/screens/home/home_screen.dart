@@ -3,6 +3,7 @@ import 'package:recetastao/core/constants/app_category.dart';
 import 'package:recetastao/models/type_foods.dart';
 import 'package:recetastao/screens/home/card_category.dart';
 import 'package:recetastao/screens/home/featured_card.dart';
+import 'package:recetastao/screens/home/header.dart';
 import 'package:recetastao/screens/home/popular_week.dart';
 import 'package:recetastao/widgets/main_navigation_bar.dart';
 import 'package:recetastao/widgets/search_main.dart';
@@ -48,9 +49,15 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            /// SEARCH
+            // ? Header
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(14.0),
+              child: Header(),
+            ),
+
+            // ? Busacdor
+            Padding(
+              padding: const EdgeInsets.all(14.0),
               child: SearchMain(),
             ),
 

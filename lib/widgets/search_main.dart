@@ -5,38 +5,29 @@ class SearchMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // Input con ícono de búsqueda adentro
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Buscar...',
-                prefixIcon: const Icon(Icons.search), // Icono dentro del input
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
-              ),
-            ),
+    return Container(
+      height: 58,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(18),
+      ),
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: 'Buscar recetas, ingredientes...',
+          hintStyle: TextStyle(
+            color: Colors.grey.shade600,
+            fontSize: 15,
+          ),
+          prefixIcon: Icon(
+            Icons.search,
+            color: Colors.grey.shade700,
+          ),
+          border: InputBorder.none,
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 18,
           ),
         ),
-        // const SizedBox(width: 8),
-        // Botón cuadrado, verde, con ícono blanco
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.green, // Color de fondo verde
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0), // Bordes redondeados
-            ),
-            padding: const EdgeInsets.all(16),
-          ),
-          child: const Icon(Icons.search, color: Colors.white), // Ícono blanco
-        ),
-      ],
+      ),
     );
   }
 }
