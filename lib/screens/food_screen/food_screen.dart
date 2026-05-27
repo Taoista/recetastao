@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:recetastao/models/recipe.dart';
 import 'package:recetastao/screens/food_screen/header_foods.dart';
 import 'package:recetastao/screens/food_screen/ingredients_list.dart';
-import 'package:recetastao/screens/food_screen/person_data.dart';
 import 'package:recetastao/screens/food_screen/steps_list.dart';
 
 class FoodScreen extends StatefulWidget {
@@ -91,7 +90,9 @@ class _FoodScreenState extends State<FoodScreen> {
             children: [
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.push("/ingredient/${widget.idFood}");
+                  },
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.green),
                   child: const Text("Ingredientes"),
