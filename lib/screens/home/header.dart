@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recetastao/core/theme/app_colors.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -21,7 +23,7 @@ class Header extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: AppColors.primaryDark,
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -39,7 +41,7 @@ class Header extends StatelessWidget {
               '¿Qué vas a cocinar hoy?',
               style: TextStyle(
                 fontSize: 15,
-                color: Colors.grey.shade700,
+                color: AppColors.primaryDark,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -47,16 +49,21 @@ class Header extends StatelessWidget {
         ),
 
         /// NOTIFICATION BUTTON
-        Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: Colors.grey.shade100,
-            borderRadius: BorderRadius.circular(18),
-          ),
-          child: const Icon(
-            Icons.notifications_none_rounded,
-            color: Colors.black,
-            size: 28,
+        InkWell(
+          onTap: () {
+            context.push("/alerts");
+          },
+          child: Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: const Icon(
+              Icons.notifications_none_rounded,
+              color: Colors.black,
+              size: 28,
+            ),
           ),
         ),
       ],

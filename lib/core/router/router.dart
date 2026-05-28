@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:recetastao/screens/alerts/alerts_screen.dart';
 import 'package:recetastao/screens/card_category_food/card_category_screen.dart';
 import 'package:recetastao/screens/food_screen/food_screen.dart';
 import 'package:recetastao/screens/home/home_screen.dart';
@@ -17,6 +18,11 @@ appRouter() {
       path: "/home",
       name: HomeScreen.name,
       builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: "/alerts",
+      name: AlertsScreen.name,
+      builder: (context, state) => const AlertsScreen(),
     ),
     GoRoute(
       path: "/card_category_food/:id_food",
