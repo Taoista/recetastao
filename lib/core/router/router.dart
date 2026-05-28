@@ -5,6 +5,7 @@ import 'package:recetastao/screens/food_screen/food_screen.dart';
 import 'package:recetastao/screens/home/home_screen.dart';
 import 'package:recetastao/screens/ingredient/ingredient_screen.dart';
 import 'package:recetastao/screens/preparation/preparation_screen.dart';
+import 'package:recetastao/screens/search/search_screen.dart';
 import 'package:recetastao/screens/start/start_scree.dart';
 
 appRouter() {
@@ -24,6 +25,13 @@ appRouter() {
       name: AlertsScreen.name,
       builder: (context, state) => const AlertsScreen(),
     ),
+    GoRoute(
+     path: "/search/:key_search",
+      name: SearchScreen.routeName,
+      builder: (context, state) {
+              String keySearch = state.pathParameters["key_search"]!;
+              return SearchScreen(keySearch: keySearch);
+    }),
     GoRoute(
       path: "/card_category_food/:id_food",
       name: CardCategoryScreen.name,
