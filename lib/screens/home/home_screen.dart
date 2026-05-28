@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recetastao/core/constants/app_category.dart';
+import 'package:recetastao/core/theme/app_colors.dart';
 import 'package:recetastao/models/type_foods.dart';
 import 'package:recetastao/screens/home/card_category.dart';
 import 'package:recetastao/screens/home/featured_card.dart';
@@ -44,7 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       bottomNavigationBar: MainNavigationBar(),
       appBar: AppBar(
-        title: const Text('Recetas Tao'),
+        title: Text('Recetas Tao',
+            style: GoogleFonts.cormorantGaramond(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: AppColors.primaryDark,
+            )),
       ),
       body: SingleChildScrollView(
         child: Column(

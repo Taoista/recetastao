@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recetastao/core/theme/app_colors.dart';
 import 'package:recetastao/models/recipe.dart';
 
@@ -10,17 +11,16 @@ class FeaturedCard extends StatefulWidget {
 }
 
 class _FeaturedCardState extends State<FeaturedCard> {
-
   bool isLoading = true;
-  Recipe? food = null; 
+  Recipe? food = null;
 
   // ? obtiene los productos
   List<Recipe> listFood = getRecipeFoods();
 
-
   void getData() async {
-
-    food = listFood.firstWhere((recipe) => recipe.featured == true,);
+    food = listFood.firstWhere(
+      (recipe) => recipe.featured == true,
+    );
 
     await Future.delayed(const Duration(seconds: 2));
     setState(() {
@@ -43,21 +43,22 @@ class _FeaturedCardState extends State<FeaturedCard> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
+            Text(
               'Destacados',
-              style: TextStyle(
+              style: GoogleFonts.cormorantGaramond(
                 fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: AppColors.textPrimary,
+                fontWeight: FontWeight.w900,
+                color: AppColors.primaryDark,
               ),
             ),
             TextButton(
               onPressed: () {},
-              child: const Text(
+              child: Text(
                 'Ver todas',
-                style: TextStyle(
-                  color: AppColors.primary,
-                  fontWeight: FontWeight.w600,
+                style: GoogleFonts.cormorantGaramond(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.primaryDark,
                 ),
               ),
             ),

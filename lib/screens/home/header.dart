@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recetastao/core/theme/app_colors.dart';
 
 class Header extends StatelessWidget {
@@ -18,14 +19,12 @@ class Header extends StatelessWidget {
             /// HELLO
             Row(
               children: [
-                const Text(
-                  'Hola Taoista',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.primaryDark,
-                  ),
-                ),
+                Text('Hola Tao',
+                    style: GoogleFonts.cormorantGaramond(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w900,
+                      color: AppColors.primaryDark,
+                    )),
                 const SizedBox(width: 8),
                 Icon(
                   Icons.waving_hand_rounded,

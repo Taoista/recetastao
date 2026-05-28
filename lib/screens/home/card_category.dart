@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:recetastao/core/theme/app_colors.dart';
 
 class CardCategory extends StatelessWidget {
   final int idFood;
   final String nameCategory;
   final String pathImage;
 
-  const CardCategory({super.key, required this.idFood, required this.nameCategory, required this.pathImage});
+  const CardCategory(
+      {super.key,
+      required this.idFood,
+      required this.nameCategory,
+      required this.pathImage});
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +34,12 @@ class CardCategory extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 1),
-        Text(
-          nameCategory,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 10,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+        Text(nameCategory,
+            style: GoogleFonts.cormorantGaramond(
+              fontSize: 13,
+              fontWeight: FontWeight.w900,
+              color: AppColors.primaryDark,
+            )),
       ],
     );
   }

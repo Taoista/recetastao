@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recetastao/core/theme/app_colors.dart';
 
 class PopularWeek extends StatelessWidget {
@@ -13,21 +14,22 @@ class PopularWeek extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
+            Text(
               'Populares esta semana',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: AppColors.textPrimary,
-              ),
+              style: GoogleFonts.cormorantGaramond(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w900,
+                  color: AppColors.primaryDark,
+                ),
             ),
             TextButton(
               onPressed: () {},
-              child: const Text(
+              child: Text(
                 'Ver todas',
-                style: TextStyle(
-                  color: AppColors.primary,
-                  fontWeight: FontWeight.w600,
+                style: GoogleFonts.cormorantGaramond(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.primaryDark,
                 ),
               ),
             ),
