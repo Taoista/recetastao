@@ -21,7 +21,7 @@ class _AlertsScreenState extends State<AlertsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MainNavigationBar(),
+      // bottomNavigationBar: MainNavigationBar(),
       appBar: AppBar(
         title: Text('Alertas',
             style: GoogleFonts.cormorantGaramond(

@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MainNavigationBar(),
+      bottomNavigationBar: MainNavigationBar(selectedIndex: 0),
       appBar: AppBar(
         title: Text('Recetas Tao',
             style: GoogleFonts.cormorantGaramond(

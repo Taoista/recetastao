@@ -1,93 +1,102 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recetastao/core/theme/app_colors.dart';
 
+class MainNavigationBar extends StatefulWidget {
+  final int selectedIndex;
 
+  const MainNavigationBar({super.key, required this.selectedIndex});
 
-class MainNavigationBar extends StatelessWidget {
-  const MainNavigationBar({super.key});
+  @override
+  State<MainNavigationBar> createState() => _MainNavigationBarState();
+}
+
+class _MainNavigationBarState extends State<MainNavigationBar> {
+  int selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.selectedIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    int selectedIndex = 0;
-
     return Container(
-
-  decoration: BoxDecoration(
-    border: Border(
-      top: BorderSide(
-        color: Colors.black.withOpacity(0.15),
-        width: 1,
-      ),
-    ),
-  ),
-
-  child: NavigationBar(
-
-    backgroundColor: Colors.white,
-
-    indicatorColor: Colors.green.withOpacity(0.18),
-
-    selectedIndex: selectedIndex,
-
-    labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-
-    onDestinationSelected: (index) {
-      // setState(() {
-      //   selectedIndex = index;
-      // });
-    },
-
-    destinations: const [
-
-      NavigationDestination(
-        selectedIcon: Icon(
-          Icons.home,
-          color: Colors.green,
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: AppColors.textPrimary,
+              width: 0,
+            ),
+          ),
         ),
-        icon: Icon(
-          Icons.home_outlined,
-          color: Colors.black,
-        ),
-        label: 'Inicio',
-      ),
-
-      NavigationDestination(
-        selectedIcon: Icon(
-          Icons.search,
-          color: Colors.green,
-        ),
-        icon: Icon(
-          Icons.search,
-          color: Colors.black,
-        ),
-        label: 'Buscar',
-      ),
-
-      NavigationDestination(
-        selectedIcon: Icon(
-          Icons.favorite,
-          color: Colors.green,
-        ),
-        icon: Icon(
-          Icons.favorite_border,
-          color: Colors.black,
-        ),
-        label: 'Favoritos',
-      ),
-
-      NavigationDestination(
-        selectedIcon: Icon(
-          Icons.person,
-          color: Colors.green,
-        ),
-        icon: Icon(
-          Icons.person_outline,
-          color: Colors.black,
-        ),
-        label: 'Perfil',
-      ),
-    ],
-  ),
-);
+        child: NavigationBarTheme(
+          data: NavigationBarThemeData(
+            backgroundColor: AppColors.primarySoft,
+            labelTextStyle: WidgetStatePropertyAll(
+              TextStyle(
+                color: AppColors.textPrimary,
+              ),
+            ),
+          ),
+          child: NavigationBar(
+            selectedIndex: selectedIndex,
+            onDestinationSelected: (index) {
+              if(index == 0){
+                context.push("/home");
+              } 
+              if(index == 1){
+                context.push("/search/''");
+              } 
+            },
+            destinations: [
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.home,
+                  color: AppColors.primaryDark,
+                ),
+                icon: Icon(
+                  Icons.home_outlined,
+                  color: AppColors.primaryDark,
+                ),
+                label: 'Inicio',
+              ),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.search,
+                  color: AppColors.primaryDark,
+                ),
+                icon: Icon(
+                  Icons.search,
+                  color: AppColors.primaryDark,
+                ),
+                label: 'Buscar',
+              ),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.favorite,
+                  color: Colors.green,
+                ),
+                icon: Icon(
+                  Icons.favorite_border,
+                  color: Colors.black,
+                ),
+                label: 'Favoritos',
+              ),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.person,
+                  color: Colors.green,
+                ),
+                icon: Icon(
+                  Icons.person_outline,
+                  color: Colors.black,
+                ),
+                label: 'Perfil',
+              ),
+            ],
+          ),
+        ));
   }
 }
