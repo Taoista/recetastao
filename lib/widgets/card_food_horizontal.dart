@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recetastao/core/theme/app_colors.dart';
 
@@ -9,6 +10,7 @@ class CardFoodHorizontal extends StatelessWidget {
   final double rating;
   final String time;
   final int portions;
+  final int idFood;
 
   const CardFoodHorizontal(
       {super.key,
@@ -17,7 +19,7 @@ class CardFoodHorizontal extends StatelessWidget {
       required this.description,
       required this.rating,
       required this.time,
-      required this.portions});
+      required this.portions, required this.idFood});
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +41,18 @@ class CardFoodHorizontal extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           /// IMAGE
-          ClipRRect(
-            borderRadius: BorderRadius.circular(22),
-            child: Image.asset(
-              image,
-              width: 90,
-              height: 90,
-              fit: BoxFit.cover,
+          InkWell(
+            onTap: () {
+              context.push("/food/$idFood");
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(22),
+              child: Image.asset(
+                image,
+                width: 90,
+                height: 90,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
 
