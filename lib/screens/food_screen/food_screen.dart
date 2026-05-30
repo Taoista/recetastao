@@ -5,7 +5,6 @@ import 'package:recetastao/core/theme/app_colors.dart';
 import 'package:recetastao/models/recipe.dart';
 import 'package:recetastao/screens/food_screen/icon_item.dart';
 import 'package:recetastao/screens/food_screen/ingredient_list.dart';
-import 'package:recetastao/screens/food_screen/steps_view.dart';
 import 'package:recetastao/screens/food_screen/steps_list.dart';
 
 class FoodScreen extends StatefulWidget {

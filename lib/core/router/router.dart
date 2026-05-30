@@ -9,8 +9,9 @@ import 'package:recetastao/screens/search/search_screen.dart';
 import 'package:recetastao/screens/start/start_scree.dart';
 
 appRouter() {
-  // return GoRouter(initialLocation: "/home", routes: [
-  return GoRouter(initialLocation: "/food/2", routes: [
+  return GoRouter(initialLocation: "/home", routes: [
+  // return GoRouter(initialLocation: "/food/2", routes: [
+  // return GoRouter(initialLocation: "/preparation/2", routes: [
     GoRoute(
       path: "/start",
       name: StartScreen.name,
