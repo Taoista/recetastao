@@ -22,7 +22,7 @@ class FoodScreen extends StatefulWidget {
 
 class _FoodScreenState extends State<FoodScreen> {
   bool isLoading = false;
-  Recipe? recipes = null;
+  Recipe? recipes;
   List<Ingredient> ingredients = [];
   List<StepRecipe> stepsList = [];
 

@@ -14,17 +14,58 @@ class CardPreparation extends StatelessWidget {
         child: ListView(
           children: [
             /// IMAGEN
+            // ClipRRect(
+            //   borderRadius: BorderRadius.circular(10),
+            //   child: SizedBox(
+            //     width: double.infinity,
+            //     height: 200,
+            //     child: Image.network(
+            //       steps.img,
+            //       fit: BoxFit.cover,
+            //     ),
+            //   ),
+            // ),
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: SizedBox(
                 width: double.infinity,
                 height: 200,
-                child: Image.asset(
+                child: Image.network(
                   steps.img,
                   fit: BoxFit.cover,
+                  loadingBuilder: (
+                    BuildContext context,
+                    Widget child,
+                    ImageChunkEvent? loadingProgress,
+                  ) {
+                    if (loadingProgress == null) {
+                      return child;
+                    }
+
+                    return Container(
+                      color: Colors.grey.shade300,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  },
+                  errorBuilder: (
+                    BuildContext context,
+                    Object error,
+                    StackTrace? stackTrace,
+                  ) {
+                    return Container(
+                      color: Colors.grey.shade300,
+                      child: const Icon(
+                        Icons.image_not_supported,
+                        size: 50,
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
+            // ? termino de la imagen con el loading
             const SizedBox(height: 30),
             // ? paso para cocinar
             Container(
