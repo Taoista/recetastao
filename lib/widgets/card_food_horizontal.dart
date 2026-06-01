@@ -47,7 +47,7 @@ class CardFoodHorizontal extends StatelessWidget {
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(22),
-              child: Image.asset(
+              child: Image.network(
                 image,
                 width: 90,
                 height: 90,

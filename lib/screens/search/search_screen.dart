@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recetastao/core/network/api_search_recipes.dart';
 import 'package:recetastao/core/theme/app_colors.dart';
 import 'package:recetastao/models/recipe.dart';
 import 'package:recetastao/widgets/card_food_horizontal.dart';
@@ -21,56 +22,24 @@ class _SearchScreenState extends State<SearchScreen> {
 
   List<Recipe> recipes = [];
 
-  void getData() {
-    var recetas = getRecipeFoods();
-    setState(() {
-      recipes = searchRecipes(recetas, widget.keySearch);
-    });
-  }
-  // * busqueda de redcetas
-
-  List<Recipe> searchRecipes(List<Recipe> recipes,String query,) {
-    if (query.trim().isEmpty) {
-      return recipes;
+  // * realiza la peticion para obtener los productos
+  Future<void> getDataFromApi() async {
+    try {
+      final api = ApiSearchRecipes();
+      final recipesFromApi = await api.searchRecipes(widget.keySearch);
+      setState(() {
+        recipes = recipesFromApi;
+      });
+    } catch (e) {
+      print("Error fetching recipes: $e");
     }
-
-    final search = query.toLowerCase();
-
-    return recipes.where((recipe) {
-      // Nombre
-      if (recipe.name.toLowerCase().contains(search)) {
-        return true;
-      }
-
-      // Descripción
-      if (recipe.description.toLowerCase().contains(search)) {
-        return true;
-      }
-
-      // Ingredientes
-      if (recipe.ingredients.any(
-        (ingredient) => ingredient.ingrediente.toLowerCase().contains(search),
-      )) {
-        return true;
-      }
-
-      // Pasos
-      if (recipe.steps.any(
-        (step) =>
-            step.title.toLowerCase().contains(search) ||
-            step.texto.toLowerCase().contains(search),
-      )) {
-        return true;
-      }
-
-      return false;
-    }).toList();
   }
+
 
   @override
   void initState() {
     super.initState();
-    getData();
+    getDataFromApi();
   }
 
   @override
@@ -97,7 +66,7 @@ class _SearchScreenState extends State<SearchScreen> {
               itemBuilder: (context, index) {
                 final recipe = recipes[index];
                 return CardFoodHorizontal(
-                  image: recipe.imageUrl,
+                  image: recipe.imgUrl,
                   title: recipe.name,
                   description: recipe.description,
                   rating: recipe.top,

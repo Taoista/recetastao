@@ -90,7 +90,7 @@ class _FeaturedCardState extends State<FeaturedCard> {
                   top: Radius.circular(22),
                 ),
                 child: Image.asset(
-                  food!.imageUrl,
+                  food!.imgUrl,
                   height: 190,
                   width: double.infinity,
                   fit: BoxFit.cover,

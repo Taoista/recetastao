@@ -13,7 +13,7 @@ class HeaderFoods extends StatelessWidget {
       child: Stack(
         children: [
           Image.asset(
-            recipe.imageUrl,
+            recipe.imgUrl,
             height: 200,
             width: double.infinity,
             fit: BoxFit.cover,

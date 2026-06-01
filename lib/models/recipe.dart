@@ -1,12 +1,11 @@
 class Recipe {
   final int id;
   final int idPlato;
-  final bool state;
   final bool featured;
   final double top;
   final String name;
   final String description;
-  final String imageUrl;
+  final String imgUrl;
   final int personas;
   final String icon;
   final int time;
@@ -18,12 +17,11 @@ class Recipe {
   Recipe({
     required this.id,
     required this.idPlato,
-    required this.state,
     required this.featured,
     required this.top,
     required this.name,
     required this.description,
-    required this.imageUrl,
+    required this.imgUrl,
     required this.personas,
     required this.icon,
     required this.time,
@@ -36,41 +34,40 @@ class Recipe {
   factory Recipe.fromMap(Map<String, dynamic> map) {
     return Recipe(
       id: map['id'],
-      idPlato: map['id_food'],
-      state: map['state'] == 1 ? true : false,
+      idPlato: map['id_type_food'],
       featured: map['featured'] == 1 ? true : false,
-      top: (map['top'] as num).toDouble(),
+      top: (map['top'] as num?)?.toDouble() ?? 0.0,
       name: map['name'],
       description: map['description'],
-      imageUrl: map['imageUrl'],
+      imgUrl: map['img_url'],
       personas: map['personas'],
       icon: map['icon'],
       time: map['time'],
       tipo: map['tipo'],
-      origen: map['origen'],
-      ingredients: (map['ingredients'] as List<dynamic>)
-          .map((item) => Ingredient.fromMap(item))
-          .toList(),
-      steps: (map['steps'] as List<dynamic>)
-          .map((item) => StepRecipe.fromMap(
+      origen: map['pais'],
+      ingredients: (map['ingredients'] as List<dynamic>?)
+          ?.map((item) => Ingredient.fromMap(item))
+          .toList() ?? [],
+      steps: (map['steps'] as List<dynamic>?)
+          ?.map((item) => StepRecipe.fromMap(
               item as Map<String, dynamic>)) // Aquí pasas a objeto
-          .toList(),
+          .toList() ?? [],
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'id_food': idPlato,
+      'id_type_food': idPlato,
       'top': top,
       'name': name,
       'description': description,
-      'imageUrl': imageUrl,
+      'img_url': imgUrl,
       'personas': personas,
       'icon': icon,
       'time': time,
       'tipo': tipo,
-      'origen': origen,
+      'pais': origen,
       'ingredients': ingredients.map((e) => e.toMap()).toList(),
       'steps': steps.map((e) => e.toMap()).toList(),
     };
@@ -138,18 +135,18 @@ List<Recipe> getRecipeFoods() {
 const List<Map<String, dynamic>> foodsLista = [
   {
     'id': 1,
-    "id_food": 2,
+    "id_type_food": 2,
     "state": 1,
     "featured": 0,
     "top": 5.0,
     "name": "Champiñones cremosos con arroz",
     "description": "Delicious dish with a unique flavor.",
-    "imageUrl": "food_01_header.jpg",
+    "img_url": "food_01_header.jpg",
     "personas": 4,
     "icon": "food_01.png",
     "time": 12,
     "tipo": "Platos principales",
-    "origen": "italiana",
+    "pais": "italiana",
     "ingredients": [
       {
         "ingrediente": "Cebolla",
@@ -250,18 +247,18 @@ const List<Map<String, dynamic>> foodsLista = [
   },
   {
     'id': 2,
-    "id_food": 2,
+    "id_type_food": 2,
     "state": 1,
     "featured": 0,
     "top": 5.0,
     "name": "Champiñones cremosos con arroz",
     "description": "Delicious dish with a unique flavor.",
-    "imageUrl": "food_01_header.jpg",
+    "img_url": "food_01_header.jpg",
     "personas": 4,
     "icon": "food_01.png",
     "time": 12,
     "tipo": "Platos principales",
-    "origen": "italiana",
+    "pais": "italiana",
     "ingredients": [
       {
         "ingrediente": "Cebolla",
@@ -362,19 +359,19 @@ const List<Map<String, dynamic>> foodsLista = [
   },
   {
     'id': 3,
-    "id_food": 1,
+    "id_type_food": 1,
     "state": 1,
     "featured": 1,
     "top": 5.0,
     "name": "Ensalada Frutal con Higos",
     "description":
         "efrescante ensalada de frutas frescas con higos dulces, ideal como entrada ligera o aperitivo saludable.",
-    "imageUrl": "assets/images/food_headers/01/food_header.png",
+    "img_url": "assets/images/food_headers/01/food_header.png",
     "personas": 4,
     "icon": "food_01.png",
     "time": 10,
     "tipo": "Entrada Aperitivo",
-    "origen": "Española",
+    "pais": "Española",
     "ingredients": [
       {
         "ingrediente": "Higos o fruta de temporada",
