@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recetastao/core/network/api_get_recipe_selected.dart';
 import 'package:recetastao/core/theme/app_colors.dart';
 import 'package:recetastao/models/recipe.dart';
+import 'package:recetastao/screens/food_screen/food_skeleton.dart';
 import 'package:recetastao/screens/food_screen/icon_item.dart';
 import 'package:recetastao/screens/food_screen/ingredient_list.dart';
 import 'package:recetastao/screens/food_screen/steps_list.dart';
@@ -20,48 +22,37 @@ class FoodScreen extends StatefulWidget {
 
 class _FoodScreenState extends State<FoodScreen> {
   bool isLoading = false;
-  List<Recipe> listFood = getRecipeFoods();
+  Recipe? recipes = null;
   List<Ingredient> ingredients = [];
   List<StepRecipe> stepsList = [];
 
-  Future<void> loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
+  Future<void> getData() async {
 
-    final List<Recipe> lista = getRecipeFoods();
+    final data = ApiGetRecipeSelected();
+
+    final recipe = await data.searchRecipes(int.parse(widget.idFood));
 
     setState(() {
-      print("entrando a la consola");
-
-      listFood = lista
-          .where((recipe) => recipe.idPlato == int.parse(widget.idFood))
-          .toList();
-
-      if (listFood.isNotEmpty) {
-        ingredients = listFood.first.ingredients;
-        print(ingredients);
-        stepsList = listFood.first.steps;
-
-        for (var i = 0; i < stepsList.length; i++) {
-          print(stepsList[i].title);
-        }
-      } else {
-        print("No se encontró la receta");
-      }
-
+      recipes = recipe;
+      ingredients = recipe.ingredients;
+      stepsList = recipe.steps;
       isLoading = true;
     });
+
   }
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    loadData();
+    //loadData();
+    getData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return isLoading ? Scaffold(
       backgroundColor: AppColors.background,
       body: Stack(
         children: [
@@ -69,8 +60,8 @@ class _FoodScreenState extends State<FoodScreen> {
           SizedBox(
             height: 420,
             width: double.infinity,
-            child: Image.asset(
-              'assets/images/01.jpg',
+            child: Image.network(
+              recipes!.imgUrl,
               fit: BoxFit.cover,
             ),
           ),
@@ -112,7 +103,7 @@ class _FoodScreenState extends State<FoodScreen> {
                     const SizedBox(height: 20),
 
                     Text(
-                      'Pollo al horno con romero',
+                      recipes!.name,
                       style: GoogleFonts.cormorantGaramond(
                         fontSize: 42,
                         fontWeight: FontWeight.w700,
@@ -123,7 +114,7 @@ class _FoodScreenState extends State<FoodScreen> {
                     const SizedBox(height: 12),
 
                     Text(
-                      'Jugoso pollo al horno con papas y romero, ideal para toda la familia.',
+                      recipes!.description,
                       style: GoogleFonts.poppins(
                         fontSize: 16,
                         color: AppColors.textSecondary,
@@ -137,19 +128,19 @@ class _FoodScreenState extends State<FoodScreen> {
                       children: [
                         IconItem(
                           icon: Icons.star,
-                          value: '4.8',
+                          value: recipes!.top.toString(),
                           label: 'Valoración',
                           color: AppColors.rating,
                         ),
                         IconItem(
                           icon: Icons.access_time,
-                          value: '35 min',
+                          value: '${recipes!.time} min',
                           label: 'Tiempo',
                           color: AppColors.primaryDark,
                         ),
                         IconItem(
                           icon: Icons.people_alt_outlined,
-                          value: '4',
+                          value: '${recipes!.personas}',
                           label: 'Porciones',
                           color: AppColors.primaryDark,
                         ),
@@ -193,12 +184,11 @@ class _FoodScreenState extends State<FoodScreen> {
                     ),
 
                     const SizedBox(height: 20),
-                    // StepsList(number: 1, text: 'Precalienta el horno a 200°C'),
-                    StepsList(number: 1, text: 'Precalienta el horno a 200°C'),
-                    StepsList(number: 2, text: 'Mezcla aceite, ajo y romero'),
-                    StepsList(number: 3, text: 'Unta el pollo con la mezcla'),
-                    StepsList(number: 4, text: 'Agrega las papas alrededor'),
-                    StepsList(number: 5, text: 'Hornea durante 35 minutos'),
+                     Column(
+                      children: stepsList.map((e) {
+                        return StepsList(number: e.id, text: e.texto);
+                      }).toList(),
+                    ),
 
                     const SizedBox(height: 40),
 
@@ -277,6 +267,6 @@ class _FoodScreenState extends State<FoodScreen> {
           ),
         ],
       ),
-    );
+    ): FoodSkeleton();
   }
 }

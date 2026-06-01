@@ -2,21 +2,21 @@ import 'package:dio/dio.dart';
 import 'package:recetastao/core/config/app_config.dart';
 import 'package:recetastao/models/recipe.dart';
 
-class ApiSearchRecipes {
-  
-  ApiSearchRecipes();
+class ApiGetRecipeSelected {
+
+  ApiGetRecipeSelected();
 
   var dio = Dio();
 
-
-  Future<List<Recipe>> searchRecipes(String keySearch) async {
+  Future<Recipe> searchRecipes(int idRecipe) async {
     try {
-      final response = await dio.get("${AppConfig.baseUrl}v1/get-recipes/$keySearch");
-      // print(response);
+      final response = await dio.get("${AppConfig.baseUrl}v1/get-recipe-details/$idRecipe");
       if(response.statusCode == 200) {
-        List<dynamic> jsonData = response.data['data'];
+
+        final Map<String, dynamic> recipeJson =
+            response.data['data'] as Map<String, dynamic>;
         
-        final List<Recipe> recipes = jsonData.map((item) => Recipe.fromMap(item)).toList();
+        final recipes = Recipe.fromMap(recipeJson);
         return recipes;
       } else {
         throw Exception("Failed to load recipes: ${response.statusCode}");

@@ -30,6 +30,7 @@ class _PreparationScreenState extends State<PreparationScreen> {
 
     final List<Recipe> lista = getRecipeFoods();
 
+
     setState(() {
       print("entrando a la consola");
 
