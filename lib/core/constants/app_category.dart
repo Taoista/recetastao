@@ -39,5 +39,10 @@ const categoryList = [
     'name': 'Sopas',
     'icon': 'assets/icons/sopa.png',
   },
+  {
+    'id': 7,
+    'name': 'Entradas',
+    'icon': 'assets/icons/bebida.png',
+  },
   
 ];
