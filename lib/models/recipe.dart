@@ -13,6 +13,7 @@ class Recipe {
   final String origen;
   final List<Ingredient> ingredients;
   final List<StepRecipe> steps;
+  final String searchText;
 
   Recipe({
     required this.id,
@@ -29,6 +30,7 @@ class Recipe {
     required this.origen,
     required this.ingredients,
     required this.steps,
+    required this.searchText,
   });
 
   factory Recipe.fromMap(Map<String, dynamic> map) {
@@ -52,6 +54,7 @@ class Recipe {
           ?.map((item) => StepRecipe.fromMap(
               item as Map<String, dynamic>)) // Aquí pasas a objeto
           .toList() ?? [],
+      searchText: map['search_text'],
     );
   }
 
@@ -70,6 +73,7 @@ class Recipe {
       'pais': origen,
       'ingredients': ingredients.map((e) => e.toMap()).toList(),
       'steps': steps.map((e) => e.toMap()).toList(),
+      'search_text': searchText,
     };
   }
 }
@@ -243,7 +247,8 @@ const List<Map<String, dynamic>> foodsLista = [
         "texto":
             "Termina decorando con perejil picado fresco para darle color y sirve inmediatamente."
       }
-    ]
+    ],
+    "search_text": "Champiñones cremosos con arroz, arroz con champiñones, risotto de champiñones, receta de arroz cremoso, plato principal con champiñones"
   },
   {
     'id': 2,
@@ -355,7 +360,8 @@ const List<Map<String, dynamic>> foodsLista = [
         "texto":
             "Termina decorando con perejil picado fresco para darle color y sirve inmediatamente."
       }
-    ]
+    ],
+    "search_text": "Champiñones cremosos con arroz, arroz con champiñones, risotto de champiñones, receta de arroz cremoso, plato principal con champiñones"
   },
   {
     'id': 3,
@@ -433,6 +439,7 @@ const List<Map<String, dynamic>> foodsLista = [
         "img": "assets/images/food_headers/01/step_05.png",
         "texto": "Agrega el aderezo de pesto al gusto."
       }
-    ]
+    ],
+    "search_text": "Ensalada Frutal con Higos, higos dulces, ensalada de frutas frescas"
   },
 ];

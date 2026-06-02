@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recetao/core/constants/app_category.dart';
+import 'package:recetao/core/network/api_category_recipe.dart';
 import 'package:recetao/core/theme/app_colors.dart';
+import 'package:recetao/models/recipe.dart';
+import 'package:recetao/screens/category/search_category.dart';
+import 'package:recetao/widgets/card_food_horizontal.dart';
 import 'package:recetao/widgets/main_navigation_bar.dart';
-import 'package:recetao/widgets/search_main.dart';
-
 
 class CategoryScreen extends StatefulWidget {
   static const String routeName = "category_screen";
@@ -18,10 +20,12 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-
   List<dynamic> listCategory = categoryList;
 
   String labelCategory = "";
+
+  List<Recipe> recipes = [];
+  List<Recipe> allRecipes = [];
 
   void selectData() {
     for (var category in categoryList) {
@@ -32,14 +36,20 @@ class _CategoryScreenState extends State<CategoryScreen> {
         break;
       }
     }
-   
   }
 
   Future<void> loadData() async {
-    
-
+    final data = ApiCategoryRecipe();
+    try {
+      final recipesRequest = await data.getRecipesByCategory(widget.idCategory);
+      setState(() {
+        allRecipes = recipesRequest;
+        recipes = recipesRequest;
+      });
+    } catch (e) {
+      print("Error loading recipes: $e");
+    }
   }
-
 
   @override
   initState() {
@@ -47,8 +57,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
     selectData();
     loadData();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -66,25 +74,33 @@ class _CategoryScreenState extends State<CategoryScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(14.0),
-            child: SearchMain(),
+            child: SearchCategory(
+              listRecipes: recipes,
+              onFilter: (newRecipes) {
+                setState(() {
+                  recipes = newRecipes;
+                });
+              },
+              listOriginalRecipes: allRecipes,
+            ),
           ),
-          // Expanded(
-          //   child: ListView.builder(
-          //     itemCount: recipes.length,
-          //     itemBuilder: (context, index) {
-          //       final recipe = recipes[index];
-          //       return CardFoodHorizontal(
-          //         image: recipe.imgUrl,
-          //         title: recipe.name,
-          //         description: recipe.description,
-          //         rating: recipe.top,
-          //         time: recipe.time.toString(),
-          //         portions: recipe.personas,
-          //         idFood: recipe.id,
-          //       );
-          //     },
-          //   ),
-          // ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: recipes.length,
+              itemBuilder: (context, index) {
+                final recipe = recipes[index];
+                return CardFoodHorizontal(
+                  image: recipe.imgUrl,
+                  title: recipe.name,
+                  description: recipe.description,
+                  rating: recipe.top,
+                  time: recipe.time.toString(),
+                  portions: recipe.personas,
+                  idFood: recipe.id,
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
