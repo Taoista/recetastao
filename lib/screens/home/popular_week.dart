@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:recetastao/core/theme/app_colors.dart';
+import 'package:recetao/core/theme/app_colors.dart';
 
 class PopularWeek extends StatelessWidget {
   const PopularWeek({super.key});

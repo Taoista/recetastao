@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recetastao/core/theme/app_colors.dart';
+import 'package:recetao/core/theme/app_colors.dart';
 
 class StartScreen extends StatelessWidget {
   static const String name = "start_screen";

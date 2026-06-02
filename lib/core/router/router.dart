@@ -1,12 +1,12 @@
 import 'package:go_router/go_router.dart';
-import 'package:recetastao/screens/alerts/alerts_screen.dart';
-import 'package:recetastao/screens/card_category_food/card_category_screen.dart';
-import 'package:recetastao/screens/food_screen/food_screen.dart';
-import 'package:recetastao/screens/home/home_screen.dart';
-import 'package:recetastao/screens/ingredient/ingredient_screen.dart';
-import 'package:recetastao/screens/preparation/preparation_screen.dart';
-import 'package:recetastao/screens/search/search_screen.dart';
-import 'package:recetastao/screens/start/start_scree.dart';
+import 'package:recetao/screens/alerts/alerts_screen.dart';
+import 'package:recetao/screens/card_category_food/card_category_screen.dart';
+import 'package:recetao/screens/food_screen/food_screen.dart';
+import 'package:recetao/screens/home/home_screen.dart';
+import 'package:recetao/screens/ingredient/ingredient_screen.dart';
+import 'package:recetao/screens/preparation/preparation_screen.dart';
+import 'package:recetao/screens/search/search_screen.dart';
+import 'package:recetao/screens/start/start_scree.dart';
 
 appRouter() {
   return GoRouter(initialLocation: "/home", routes: [

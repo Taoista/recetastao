@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recetastao/widgets/card_food.dart';
-import 'package:recetastao/models/foods.dart';
+import 'package:recetao/widgets/card_food.dart';
+import 'package:recetao/models/foods.dart';
 
 
 

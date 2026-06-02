@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recetastao/core/theme/app_colors.dart';
+import 'package:recetao/core/theme/app_colors.dart';
 
 class CardAlert extends StatefulWidget {
 

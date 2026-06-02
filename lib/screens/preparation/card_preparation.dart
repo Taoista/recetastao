@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recetastao/core/theme/app_colors.dart';
-import 'package:recetastao/models/recipe.dart';
+import 'package:recetao/core/theme/app_colors.dart';
+import 'package:recetao/models/recipe.dart';
 
 class CardPreparation extends StatelessWidget {
   final StepRecipe steps;

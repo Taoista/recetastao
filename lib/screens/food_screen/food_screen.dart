@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:recetastao/core/network/api_get_recipe_selected.dart';
-import 'package:recetastao/core/theme/app_colors.dart';
-import 'package:recetastao/models/recipe.dart';
-import 'package:recetastao/screens/food_screen/food_skeleton.dart';
-import 'package:recetastao/screens/food_screen/icon_item.dart';
-import 'package:recetastao/screens/food_screen/ingredient_list.dart';
-import 'package:recetastao/screens/food_screen/steps_list.dart';
+import 'package:recetao/core/network/api_get_recipe_selected.dart';
+import 'package:recetao/core/theme/app_colors.dart';
+import 'package:recetao/models/recipe.dart';
+import 'package:recetao/screens/food_screen/food_skeleton.dart';
+import 'package:recetao/screens/food_screen/icon_item.dart';
+import 'package:recetao/screens/food_screen/ingredient_list.dart';
+import 'package:recetao/screens/food_screen/steps_list.dart';
 
 class FoodScreen extends StatefulWidget {
   static const String name = "food_screen";

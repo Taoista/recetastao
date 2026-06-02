@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recetastao/models/recipe.dart';
+import 'package:recetao/models/recipe.dart';
 
 class HeaderFoods extends StatelessWidget {
   final Recipe recipe;

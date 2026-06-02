@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:recetastao/core/constants/app_category.dart';
-import 'package:recetastao/core/theme/app_colors.dart';
-import 'package:recetastao/models/type_foods.dart';
-import 'package:recetastao/screens/home/card_category.dart';
-import 'package:recetastao/screens/home/featured_card.dart';
-import 'package:recetastao/screens/home/header.dart';
-import 'package:recetastao/screens/home/popular_week.dart';
-import 'package:recetastao/widgets/main_navigation_bar.dart';
-import 'package:recetastao/widgets/search_main.dart';
+import 'package:recetao/core/constants/app_category.dart';
+import 'package:recetao/core/theme/app_colors.dart';
+import 'package:recetao/models/type_foods.dart';
+import 'package:recetao/screens/home/card_category.dart';
+import 'package:recetao/screens/home/featured_card.dart';
+import 'package:recetao/screens/home/header.dart';
+import 'package:recetao/screens/home/popular_week.dart';
+import 'package:recetao/widgets/main_navigation_bar.dart';
+import 'package:recetao/widgets/search_main.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String name = "home_screen";

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:recetastao/core/theme/app_colors.dart';
-import 'package:recetastao/screens/alerts/butons_filters.dart';
-import 'package:recetastao/screens/alerts/card_alert.dart';
-import 'package:recetastao/screens/alerts/head_alert.dart';
-import 'package:recetastao/widgets/main_navigation_bar.dart';
+import 'package:recetao/core/theme/app_colors.dart';
+import 'package:recetao/screens/alerts/butons_filters.dart';
+import 'package:recetao/screens/alerts/card_alert.dart';
+import 'package:recetao/screens/alerts/head_alert.dart';
 
 class AlertsScreen extends StatefulWidget {
   static const String name = "alerts_screen";

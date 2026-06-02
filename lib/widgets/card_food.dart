@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recetastao/models/foods.dart';
+import 'package:recetao/models/foods.dart';
 
 class CardFood extends StatelessWidget {
   final Foods food;

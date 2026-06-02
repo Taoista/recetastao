@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:recetastao/core/theme/app_colors.dart';
+import 'package:recetao/core/theme/app_colors.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});

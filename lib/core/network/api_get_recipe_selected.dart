@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:recetastao/core/config/app_config.dart';
-import 'package:recetastao/models/recipe.dart';
+import 'package:recetao/core/config/app_config.dart';
+import 'package:recetao/models/recipe.dart';
 
 class ApiGetRecipeSelected {
 

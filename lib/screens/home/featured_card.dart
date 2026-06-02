@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:recetastao/core/theme/app_colors.dart';
-import 'package:recetastao/models/recipe.dart';
+import 'package:recetao/core/theme/app_colors.dart';
+import 'package:recetao/models/recipe.dart';
 
 class FeaturedCard extends StatefulWidget {
   const FeaturedCard({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:recetastao/core/network/api_search_recipes.dart';
-import 'package:recetastao/core/theme/app_colors.dart';
-import 'package:recetastao/models/recipe.dart';
-import 'package:recetastao/widgets/card_food_horizontal.dart';
-import 'package:recetastao/widgets/main_navigation_bar.dart';
-import 'package:recetastao/widgets/search_main.dart';
+import 'package:recetao/core/network/api_search_recipes.dart';
+import 'package:recetao/core/theme/app_colors.dart';
+import 'package:recetao/models/recipe.dart';
+import 'package:recetao/widgets/card_food_horizontal.dart';
+import 'package:recetao/widgets/main_navigation_bar.dart';
+import 'package:recetao/widgets/search_main.dart';
 
 class SearchScreen extends StatefulWidget {
   static const String routeName = "search_screen";
