@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recetao/core/theme/app_colors.dart';
 
@@ -15,32 +16,37 @@ class CardCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 100,
-          height: 100,
-          margin: const EdgeInsets.only(right: 14),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(14),
-            child: Image.asset(
-              pathImage,
-              fit: BoxFit.contain,
+    return InkWell(
+      onTap: () {
+        context.push("/category/$idFood");
+      },
+      child: Column(
+        children: [
+          Container(
+            width: 100,
+            height: 100,
+            margin: const EdgeInsets.only(right: 14),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(14),
+              child: Image.asset(
+                pathImage,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
-        ),
-        const SizedBox(height: 1),
-        Text(nameCategory,
-            style: GoogleFonts.cormorantGaramond(
-              fontSize: 13,
-              fontWeight: FontWeight.w900,
-              color: AppColors.primaryDark,
-            )),
-      ],
+          const SizedBox(height: 1),
+          Text(nameCategory,
+              style: GoogleFonts.cormorantGaramond(
+                fontSize: 13,
+                fontWeight: FontWeight.w900,
+                color: AppColors.primaryDark,
+              )),
+        ],
+      ),
     );
   }
 }

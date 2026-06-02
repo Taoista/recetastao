@@ -19,7 +19,7 @@ class Header extends StatelessWidget {
             /// HELLO
             Row(
               children: [
-                Text('Hola Tao',
+                Text('Hola',
                     style: GoogleFonts.cormorantGaramond(
                       fontSize: 32,
                       fontWeight: FontWeight.w900,

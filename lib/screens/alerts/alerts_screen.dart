@@ -15,7 +15,7 @@ class AlertsScreen extends StatefulWidget {
 }
 
 class _AlertsScreenState extends State<AlertsScreen> {
-  int newAlerts = 1;
+  int newAlerts = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,55 +34,36 @@ class _AlertsScreenState extends State<AlertsScreen> {
         children: [
           ButtonsFilters(newAlerts: newAlerts),
           HeadAlert(newAlerts: newAlerts),
-          const CardAlert(
-            title: 'Nueva Receta',
-            description:
-                'Descubre una receta que\nte puede encantar: Buddha Bowl',
-            timeAgo: 'Hace 2 horas',
-            imagePath: 'assets/images/01.jpg',
-            isNew: true,
-            tipeIcon: 0,
-          ),
-          const SizedBox(height: 10),
           // const CardAlert(
-          //   title: 'Lista de Compra',
+          //   title: 'Nueva Receta',
           //   description:
           //       'Descubre una receta que\nte puede encantar: Buddha Bowl',
           //   timeAgo: 'Hace 2 horas',
           //   imagePath: 'assets/images/01.jpg',
           //   isNew: true,
-          //   tipeIcon: 1,
+          //   tipeIcon: 0,
           // ),
-          // const SizedBox(height: 10),
+          const SizedBox(height: 10),
+        
+          // Text(
+          //   'Antiguas',
+          //   textAlign: TextAlign.center,
+          //   style: const TextStyle(
+          //     fontSize: 16,
+          //     fontWeight: FontWeight.w600,
+          //     color: AppColors.primaryDark,
+          //   ),
+          // ),
+          const SizedBox(height: 10),
           // const CardAlert(
-          //   title: 'Nota Sistema',
+          //   title: 'Recordatorio',
           //   description:
           //       'Descubre una receta que\nte puede encantar: Buddha Bowl',
           //   timeAgo: 'Hace 2 horas',
           //   imagePath: 'assets/images/01.jpg',
-          //   isNew: true,
-          //   tipeIcon: 2,
+          //   isNew: false,
+          //   tipeIcon: 3,
           // ),
-          // const SizedBox(height: 10),
-          Text(
-            'Antiguas',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: AppColors.primaryDark,
-            ),
-          ),
-          const SizedBox(height: 10),
-          const CardAlert(
-            title: 'Recordatorio',
-            description:
-                'Descubre una receta que\nte puede encantar: Buddha Bowl',
-            timeAgo: 'Hace 2 horas',
-            imagePath: 'assets/images/01.jpg',
-            isNew: false,
-            tipeIcon: 3,
-          ),
         ],
       ),
     );

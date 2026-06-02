@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:recetao/screens/alerts/alerts_screen.dart';
 import 'package:recetao/screens/card_category_food/card_category_screen.dart';
+import 'package:recetao/screens/category/category_screen.dart';
 import 'package:recetao/screens/food_screen/food_screen.dart';
 import 'package:recetao/screens/home/home_screen.dart';
 import 'package:recetao/screens/ingredient/ingredient_screen.dart';
@@ -61,6 +62,13 @@ appRouter() {
       builder: (context, state) {
               String idFood = state.pathParameters["id_food"]!;
               return IngredientScreen(idFood: idFood,);
+      }),
+      GoRoute(
+      path: "/category/:id_category",
+      name: CategoryScreen.routeName,
+      builder: (context, state) {
+              String idCategory = state.pathParameters["id_category"]!;
+              return CategoryScreen(idCategory: idCategory);
       }),
   ]);
 }

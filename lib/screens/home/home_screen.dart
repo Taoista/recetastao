@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       bottomNavigationBar: MainNavigationBar(selectedIndex: 0),
       appBar: AppBar(
-        title: Text('Recetas Tao',
+        title: Text('ReceTao',
             style: GoogleFonts.cormorantGaramond(
               fontSize: 32,
               fontWeight: FontWeight.bold,
