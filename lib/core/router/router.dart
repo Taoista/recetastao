@@ -8,6 +8,7 @@ import 'package:recetao/screens/ingredient/ingredient_screen.dart';
 import 'package:recetao/screens/preparation/preparation_screen.dart';
 import 'package:recetao/screens/search/search_screen.dart';
 import 'package:recetao/screens/start/start_scree.dart';
+import 'package:recetao/screens/wishlist/wishlist_screen.dart';
 
 appRouter() {
   return GoRouter(initialLocation: "/home", routes: [
@@ -27,6 +28,11 @@ appRouter() {
       path: "/alerts",
       name: AlertsScreen.name,
       builder: (context, state) => const AlertsScreen(),
+    ),
+     GoRoute(
+      path: "/wishlist",
+      name: WishlistScreen.routeName,
+      builder: (context, state) => const WishlistScreen(),
     ),
     GoRoute(
      path: "/search/:key_search",

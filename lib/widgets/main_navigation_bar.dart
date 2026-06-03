@@ -49,6 +49,9 @@ class _MainNavigationBarState extends State<MainNavigationBar> {
               if(index == 1){
                 context.push("/search/''");
               } 
+              if(index == 2){
+                context.push("/wishlist");
+              }
             },
             destinations: [
               NavigationDestination(

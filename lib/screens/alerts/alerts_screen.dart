@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recetao/core/theme/app_colors.dart';
 import 'package:recetao/screens/alerts/butons_filters.dart';
-import 'package:recetao/screens/alerts/card_alert.dart';
+// import 'package:recetao/screens/alerts/card_alert.dart';
 import 'package:recetao/screens/alerts/head_alert.dart';
 
 class AlertsScreen extends StatefulWidget {
