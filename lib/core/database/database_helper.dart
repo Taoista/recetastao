@@ -31,7 +31,7 @@ class DatabaseHelper {
     await db.execute('''
       CREATE TABLE favorites(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        id_recipes TEXT NOT NULL,
+        id_recipes TEXT NOT NULL
       )
     ''');
   }

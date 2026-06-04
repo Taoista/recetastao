@@ -1,21 +1,25 @@
 
 
 
-class Favoritos{
+class DbFavoritos{
+  final int? id; 
   final idRecipe;
-  Favoritos({
+  DbFavoritos({
+    this.id,
     required this.idRecipe,
   });
 
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'id_recipes': idRecipe,
     };
   }
 
-  factory Favoritos.fromMap(Map<String, dynamic> json) {
-    return Favoritos(
+  factory DbFavoritos.fromMap(Map<String, dynamic> json) {
+    return DbFavoritos(
+      id: json['id'],
       idRecipe: json['id_recipes']
     );
   }

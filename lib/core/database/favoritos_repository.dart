@@ -1,11 +1,9 @@
-
-
-
 import 'package:recetao/core/database/database_helper.dart';
-import 'package:recetao/core/database/favoritos.dart';
+import 'package:recetao/core/database/db_favoritos.dart';
 
 class FavoritosRepository {
-  Future<int> insertRecipe(Favoritos recipe) async {
+
+  Future<int> insertFavorite(DbFavoritos recipe) async {
     final db = await DatabaseHelper.instance.database;
 
     return await db.insert(
@@ -14,17 +12,18 @@ class FavoritosRepository {
     );
   }
 
-  Future<List<Favoritos>> getRecipes() async {
+  Future<List<DbFavoritos>> getFavorites() async {
     final db = await DatabaseHelper.instance.database;
 
     final result = await db.query('favorites');
-
     return result
-        .map((json) => Favoritos.fromMap(json))
+        .map((json) => DbFavoritos.fromMap(json))
         .toList();
   }
 
-  Future<void> deleteRecipe(int id) async {
+  
+
+  Future<void> deleteFavorite(int id) async {
     final db = await DatabaseHelper.instance.database;
 
     await db.delete(
@@ -33,4 +32,6 @@ class FavoritosRepository {
       whereArgs: [id],
     );
   }
+
+  
 }

@@ -54,7 +54,7 @@ class Recipe {
           ?.map((item) => StepRecipe.fromMap(
               item as Map<String, dynamic>)) // Aquí pasas a objeto
           .toList() ?? [],
-      searchText: map['search_text'],
+      searchText: map['search_text'] ?? '',
     );
   }
 
