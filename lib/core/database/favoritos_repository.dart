@@ -33,5 +33,18 @@ class FavoritosRepository {
     );
   }
 
+  Future<bool> getStateWishItem(int id) async {
+      final db = await DatabaseHelper.instance.database;
+
+      final result = await db.query(
+        'favorites',
+        where: 'id_recipes = ?',
+        whereArgs: [id],
+        limit: 1,
+      );
+
+      return result.isNotEmpty;
+  }
+
   
 }

@@ -7,6 +7,7 @@ import 'package:recetao/models/recipe.dart';
 import 'package:recetao/screens/category/search_category.dart';
 import 'package:recetao/widgets/card_food_horizontal.dart';
 import 'package:recetao/widgets/main_navigation_bar.dart';
+import 'package:recetao/widgets/skeleton_card_food_horizontal.dart';
 
 class CategoryScreen extends StatefulWidget {
   static const String routeName = "category_screen";
@@ -20,6 +21,8 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
+  bool isloading = false;
+
   List<dynamic> listCategory = categoryList;
 
   String labelCategory = "";
@@ -31,6 +34,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     for (var category in categoryList) {
       if (category['id'].toString() == widget.idCategory.toString()) {
         setState(() {
+          
           labelCategory = category['name'] as String;
         });
         break;
@@ -45,6 +49,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       setState(() {
         allRecipes = recipesRequest;
         recipes = recipesRequest;
+        isloading = true;
       });
     } catch (e) {
       print("Error loading recipes: $e");
@@ -84,8 +89,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
               listOriginalRecipes: allRecipes,
             ),
           ),
+          isloading ?
           Expanded(
-            child: ListView.builder(
+            child:  ListView.builder(
               itemCount: recipes.length,
               itemBuilder: (context, index) {
                 final recipe = recipes[index];
@@ -99,8 +105,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   idFood: recipe.id,
                 );
               },
-            ),
-          ),
+            ) 
+          ) : SkeletonCardFoodHorizontal(),
         ],
       ),
     );

@@ -5,7 +5,7 @@ import 'package:recetao/core/database/db_favoritos.dart';
 import 'package:recetao/core/database/favoritos_repository.dart';
 import 'package:recetao/core/theme/app_colors.dart';
 
-class CardFoodHorizontal extends StatelessWidget {
+class CardFoodHorizontal extends StatefulWidget {
   final String image;
   final String title;
   final String description;
@@ -22,6 +22,31 @@ class CardFoodHorizontal extends StatelessWidget {
       required this.rating,
       required this.time,
       required this.portions, required this.idFood});
+
+  @override
+  State<CardFoodHorizontal> createState() => _CardFoodHorizontalState();
+}
+
+class _CardFoodHorizontalState extends State<CardFoodHorizontal> {
+
+  bool stateWishList = false;
+
+  void getWishList() async {
+    final repository = FavoritosRepository();
+    
+    final exists = stateWishList = await repository.getStateWishItem(widget.idFood);
+    
+    setState(() {
+      stateWishList = exists;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getWishList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +70,12 @@ class CardFoodHorizontal extends StatelessWidget {
           /// IMAGE
           InkWell(
             onTap: () {
-              context.push("/food/$idFood");
+              context.push("/food/${widget.idFood}");
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(22),
               child: Image.network(
-                image,
+                widget.image,
                 width: 90,
                 height: 90,
                 fit: BoxFit.cover,
@@ -70,7 +95,7 @@ class CardFoodHorizontal extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        title,
+                        widget.title,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.poppins(
@@ -85,13 +110,17 @@ class CardFoodHorizontal extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 2),
                       child: InkWell(
                         onTap: () async {
-                          final repository = FavoritosRepository();
-                          await repository.insertFavorite(
-                            DbFavoritos(idRecipe: idFood),
-                          );
+                          if(stateWishList){
+
+                          }else{
+                            final repository = FavoritosRepository();
+                            await repository.insertFavorite(
+                              DbFavoritos(idRecipe: widget.idFood),
+                            );
+                          }
                         },
                         child: Icon(
-                          Icons.favorite_sharp,
+                          stateWishList ? Icons.favorite_sharp : Icons.favorite_border,
                           color: AppColors.primaryDark,
                           size: 24,
                         ),
@@ -109,7 +138,7 @@ class CardFoodHorizontal extends StatelessWidget {
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      rating.toString(),
+                      widget.rating.toString(),
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         color: AppColors.textPrimary,
@@ -123,7 +152,7 @@ class CardFoodHorizontal extends StatelessWidget {
                     ),
                     const SizedBox(width: 1),
                     Text(
-                      time,
+                      widget.time,
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         color: AppColors.textPrimary,
@@ -137,7 +166,7 @@ class CardFoodHorizontal extends StatelessWidget {
                     ),
                     const SizedBox(width: 1),
                     Text(
-                      '$portions porciones',
+                      '${widget.portions} porciones',
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         color: AppColors.textPrimary,
@@ -147,7 +176,7 @@ class CardFoodHorizontal extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  description,
+                  widget.description,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
