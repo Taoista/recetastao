@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recetao/core/constants/app_category.dart';
+import 'package:recetao/core/network/api_get_recipes_top.dart';
 import 'package:recetao/core/theme/app_colors.dart';
+import 'package:recetao/models/recipe.dart';
 import 'package:recetao/models/type_foods.dart';
 import 'package:recetao/screens/home/card_category.dart';
 import 'package:recetao/screens/home/featured_card.dart';
+import 'package:recetao/screens/home/featured_card_skeleton.dart';
 import 'package:recetao/screens/home/header.dart';
 import 'package:recetao/screens/home/popular_week.dart';
 import 'package:recetao/widgets/main_navigation_bar.dart';
@@ -20,9 +23,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  bool isLoading = false;
+
   List<TypeFood> listTypeFoods = getTypeFoods();
 
   List<dynamic> listCategory = categoryList;
+
+  Recipe? firstRecipe;
+
+  Future<void> getProductTop() async{
+    var controll = ApiGetRecipesTop();
+    var recipes = await controll.getData();
+    setState(() {
+      firstRecipe = recipes.first;
+      isLoading = true;
+    });
+  }
+
 
   Future<void> loadData() async {
     await Future.delayed(const Duration(seconds: 2));
@@ -39,6 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
     super.initState();
     loadData();
+    getProductTop();
+
   }
 
   @override
@@ -90,11 +110,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            // ? Productos detacados
-            const Padding(
+          // ? Productos detacados
+          isLoading ? Padding(
               padding: EdgeInsets.all(14.0),
-              child: FeaturedCard(),
+              child: FeaturedCard(recipe: firstRecipe!,),
+            ) : Padding(
+              padding: EdgeInsets.all(14.0),
+              child: FeaturedCardSkeleton(),
             ),
+            
 
             Padding(
               padding: const EdgeInsets.all(14.0),

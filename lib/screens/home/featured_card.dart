@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recetao/core/database/db_favoritos.dart';
+import 'package:recetao/core/database/favoritos_repository.dart';
 import 'package:recetao/core/theme/app_colors.dart';
 import 'package:recetao/models/recipe.dart';
 
 class FeaturedCard extends StatefulWidget {
-  const FeaturedCard({super.key});
+
+  final Recipe recipe;
+
+  const FeaturedCard({super.key, required this.recipe});
 
   @override
   State<FeaturedCard> createState() => _FeaturedCardState();
@@ -12,26 +17,22 @@ class FeaturedCard extends StatefulWidget {
 
 class _FeaturedCardState extends State<FeaturedCard> {
   bool isLoading = true;
-  Recipe? food = null;
 
-  // ? obtiene los productos
-  List<Recipe> listFood = getRecipeFoods();
+   bool stateWishList = false;
 
-  void getData() async {
-    food = listFood.firstWhere(
-      (recipe) => recipe.featured == true,
-    );
-
-    await Future.delayed(const Duration(seconds: 2));
+  void getWishList() async {
+    final repository = FavoritosRepository();
+    
+    final exists = stateWishList = await repository.getStateWishItem(widget.recipe.id);
+    
     setState(() {
-      isLoading = false;
+      stateWishList = exists;
     });
   }
 
   @override
   initState() {
     super.initState();
-    getData();
   }
 
   @override
@@ -89,8 +90,8 @@ class _FeaturedCardState extends State<FeaturedCard> {
                 borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(22),
                 ),
-                child: Image.asset(
-                  food!.imgUrl,
+                child: Image.network(
+                  widget.recipe.imgUrl,
                   height: 190,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -109,7 +110,7 @@ class _FeaturedCardState extends State<FeaturedCard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            food!.name,
+                            widget.recipe.name,
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -126,7 +127,7 @@ class _FeaturedCardState extends State<FeaturedCard> {
                               ),
                               const SizedBox(width: 4),
                               Text(
-                                "${food!.time} min",
+                                "${widget.recipe.time} min",
                                 style: TextStyle(
                                   color: Colors.grey.shade700,
                                   fontWeight: FontWeight.w500,
@@ -155,16 +156,24 @@ class _FeaturedCardState extends State<FeaturedCard> {
                     ),
 
                     /// FAVORITE ICON
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        Icons.favorite_border,
-                        color: Colors.grey.shade700,
-                        size: 22,
+                    InkWell(
+                      onTap: () async {
+                        final repository = FavoritosRepository();
+                        await repository.insertFavorite(
+                            DbFavoritos(idRecipe: widget.recipe.id),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: stateWishList ? Colors.grey.shade100 : AppColors.background,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon( 
+                          Icons.favorite_border,
+                          color: stateWishList ? Colors.grey.shade100 : AppColors.primary,
+                          size: 22,
+                        ),
                       ),
                     ),
                   ],
