@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recetao/core/network/api_trending_recipes.dart';
 import 'package:recetao/core/theme/app_colors.dart';
@@ -51,7 +52,9 @@ class _PopularWeekState extends State<PopularWeek> {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push("/popular");
+              },
               child: Text(
                 'Ver todas',
                 style: GoogleFonts.cormorantGaramond(

@@ -5,9 +5,11 @@ import 'package:recetao/screens/category/category_screen.dart';
 import 'package:recetao/screens/food_screen/food_screen.dart';
 import 'package:recetao/screens/home/home_screen.dart';
 import 'package:recetao/screens/ingredient/ingredient_screen.dart';
+import 'package:recetao/screens/popular/popular_screen.dart';
 import 'package:recetao/screens/preparation/preparation_screen.dart';
 import 'package:recetao/screens/search/search_screen.dart';
 import 'package:recetao/screens/start/start_scree.dart';
+import 'package:recetao/screens/top/top_screen.dart';
 import 'package:recetao/screens/wishlist/wishlist_screen.dart';
 
 appRouter() {
@@ -76,5 +78,15 @@ appRouter() {
               String idCategory = state.pathParameters["id_category"]!;
               return CategoryScreen(idCategory: idCategory);
       }),
+      GoRoute(
+        path: "/top",
+        name: TopScreen.name,
+        builder: (context, state) => const TopScreen(),
+      ),
+      GoRoute(
+        path: "/popular",
+        name: PopularScreen.name,
+        builder: (context, state) => const PopularScreen(),
+      ),
   ]);
 }

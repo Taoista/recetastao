@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recetao/core/database/db_favoritos.dart';
 import 'package:recetao/core/database/favoritos_repository.dart';
@@ -53,7 +54,9 @@ class _FeaturedCardState extends State<FeaturedCard> {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push("/top");
+              },
               child: Text(
                 'Ver todas',
                 style: GoogleFonts.cormorantGaramond(
