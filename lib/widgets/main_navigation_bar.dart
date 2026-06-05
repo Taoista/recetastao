@@ -87,17 +87,17 @@ class _MainNavigationBarState extends State<MainNavigationBar> {
                 ),
                 label: 'Favoritos',
               ),
-              NavigationDestination(
-                selectedIcon: Icon(
-                  Icons.person,
-                  color: Colors.green,
-                ),
-                icon: Icon(
-                  Icons.person_outline,
-                  color: Colors.black,
-                ),
-                label: 'Perfil',
-              ),
+              // NavigationDestination(
+              //   selectedIcon: Icon(
+              //     Icons.person,
+              //     color: Colors.green,
+              //   ),
+              //   icon: Icon(
+              //     Icons.person_outline,
+              //     color: Colors.black,
+              //   ),
+              //   label: 'Perfil',
+              // ),
             ],
           ),
         ));

@@ -133,30 +133,30 @@ class StartScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       // ? boton iniciar session
-                      SizedBox(
-                        width: double.infinity,
-                        height: 58,
-                        child: OutlinedButton(
-                          onPressed: () {},
-                          style: OutlinedButton.styleFrom(
-                            side: const BorderSide(
-                              color: AppColors.textTertiary,
-                              width: 1.5,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                            ),
-                          ),
-                          child: const Text(
-                            'Iniciar sesión',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.textTertiary,
-                            ),
-                          ),
-                        ),
-                      ),
+                      // SizedBox(
+                      //   width: double.infinity,
+                      //   height: 58,
+                      //   child: OutlinedButton(
+                      //     onPressed: () {},
+                      //     style: OutlinedButton.styleFrom(
+                      //       side: const BorderSide(
+                      //         color: AppColors.textTertiary,
+                      //         width: 1.5,
+                      //       ),
+                      //       shape: RoundedRectangleBorder(
+                      //         borderRadius: BorderRadius.circular(18),
+                      //       ),
+                      //     ),
+                      //     child: const Text(
+                      //       'Iniciar sesión',
+                      //       style: TextStyle(
+                      //         fontSize: 18,
+                      //         fontWeight: FontWeight.w600,
+                      //         color: AppColors.textTertiary,
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],

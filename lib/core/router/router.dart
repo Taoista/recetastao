@@ -13,7 +13,7 @@ import 'package:recetao/screens/top/top_screen.dart';
 import 'package:recetao/screens/wishlist/wishlist_screen.dart';
 
 appRouter() {
-  return GoRouter(initialLocation: "/home", routes: [
+  return GoRouter(initialLocation: "/start", routes: [
   // return GoRouter(initialLocation: "/food/2", routes: [
   // return GoRouter(initialLocation: "/preparation/2", routes: [
     GoRoute(
