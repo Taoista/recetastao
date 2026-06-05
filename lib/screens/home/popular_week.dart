@@ -1,9 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recetao/core/network/api_trending_recipes.dart';
 import 'package:recetao/core/theme/app_colors.dart';
+import 'package:recetao/models/recipe.dart';
+import 'package:recetao/screens/home/card_popular_week.dart';
+import 'package:recetao/screens/home/skeleton_popular_week.dart';
 
-class PopularWeek extends StatelessWidget {
+class PopularWeek extends StatefulWidget {
   const PopularWeek({super.key});
+
+  @override
+  State<PopularWeek> createState() => _PopularWeekState();
+}
+
+class _PopularWeekState extends State<PopularWeek> {
+  bool isLoading = false;
+  List<Recipe>? recipesLIst;
+
+  Future<void> getData() async {
+    final controll = ApiTrendingRecipes();
+    List<Recipe> data = await controll.getData();
+    setState(() {
+      recipesLIst = data.take(3).toList();
+      isLoading = true;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +45,10 @@ class PopularWeek extends StatelessWidget {
             Text(
               'Populares esta semana',
               style: GoogleFonts.cormorantGaramond(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w900,
-                  color: AppColors.primaryDark,
-                ),
+                fontSize: 22,
+                fontWeight: FontWeight.w900,
+                color: AppColors.primaryDark,
+              ),
             ),
             TextButton(
               onPressed: () {},
@@ -39,123 +67,25 @@ class PopularWeek extends StatelessWidget {
         const SizedBox(height: 18),
 
         /// HORIZONTAL LIST
-        SizedBox(
+        isLoading ? SizedBox(
           height: 210,
-          child: ListView(
+          child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            children: [
-              /// CARD 1
-              Container(
-                width: 140,
-                margin: const EdgeInsets.only(right: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        'assets/images/01.jpg',
-                        height: 120,
-                        width: 140,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Ensalada\nde quinoa',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        height: 1.2,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              /// CARD 2
-              Container(
-                width: 140,
-                margin: const EdgeInsets.only(right: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                         'assets/images/01.jpg',
-                        height: 120,
-                        width: 140,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Tacos de\npollo',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        height: 1.2,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              /// CARD 3
-              Container(
-                width: 140,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset(
-                             'assets/images/01.jpg',
-                            height: 120,
-                            width: 140,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Positioned(
-                          top: 8,
-                          right: 8,
-                          child: Container(
-                            padding: const EdgeInsets.all(6),
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Icon(
-                              Icons.favorite_border,
-                              size: 18,
-                              color: Colors.black87,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Brownies\nsaludables',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        height: 1.2,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            itemCount: recipesLIst!.length,
+            itemBuilder: (context, index) {
+              Recipe item = recipesLIst![index];
+              return Padding(
+                padding: const EdgeInsets.only(right: 12.0),
+                child: CardPopularWeek(idFood: item.id, name: item.name, imgUrl: item.imgUrl,),
+              );
+            },
           ),
-        ),
+        ) : SkeletonPopularWeek(),
       ],
     );
   }
 }
+
+
+/// CARD 3
+              
