@@ -39,12 +39,20 @@ class CardCategory extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 1),
-          Text(nameCategory,
+          SizedBox(
+            width: 100,
+            child: Text(
+              nameCategory,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
               style: GoogleFonts.cormorantGaramond(
                 fontSize: 13,
                 fontWeight: FontWeight.w900,
                 color: AppColors.primaryDark,
-              )),
+              ),
+            ),
+          ),
         ],
       ),
     );

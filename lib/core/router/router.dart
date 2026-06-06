@@ -8,14 +8,20 @@ import 'package:recetao/screens/ingredient/ingredient_screen.dart';
 import 'package:recetao/screens/popular/popular_screen.dart';
 import 'package:recetao/screens/preparation/preparation_screen.dart';
 import 'package:recetao/screens/search/search_screen.dart';
+import 'package:recetao/screens/splash/splash_screen.dart';
 import 'package:recetao/screens/start/start_scree.dart';
 import 'package:recetao/screens/top/top_screen.dart';
 import 'package:recetao/screens/wishlist/wishlist_screen.dart';
 
 appRouter() {
-  return GoRouter(initialLocation: "/start", routes: [
+  return GoRouter(initialLocation: "/", routes: [
   // return GoRouter(initialLocation: "/food/2", routes: [
   // return GoRouter(initialLocation: "/preparation/2", routes: [
+   GoRoute(
+      path: "/",
+      name: SplashScreen.name,
+      builder: (context, state) => const SplashScreen(),
+    ),
     GoRoute(
       path: "/start",
       name: StartScreen.name,
