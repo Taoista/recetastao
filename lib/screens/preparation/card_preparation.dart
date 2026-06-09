@@ -4,7 +4,9 @@ import 'package:recetao/models/recipe.dart';
 
 class CardPreparation extends StatelessWidget {
   final StepRecipe steps;
-  const CardPreparation({super.key, required this.steps});
+  final PageController pageController;
+  const CardPreparation(
+      {super.key, required this.steps, required this.pageController});
 
   @override
   Widget build(BuildContext context) {
@@ -127,33 +129,33 @@ class CardPreparation extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Icon(
-                    Icons.tips_and_updates_outlined,
-                    color: AppColors.primaryDark,
-                    size: 20,
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Text(
-                      'Consejo: Si la sartén está demasiado caliente, los alimentos pueden quemarse por fuera y quedar crudos por dentro.',
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.6,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // Container(
+            //   padding: const EdgeInsets.all(20),
+            //   decoration: BoxDecoration(
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.circular(25),
+            //   ),
+            //   child: Row(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            // Icon(
+            //   Icons.tips_and_updates_outlined,
+            //   color: AppColors.primaryDark,
+            //   size: 20,
+            // ),
+            // const SizedBox(width: 12),
+            // Expanded(
+            //   child: Text(
+            //     'Consejo: Si la sartén está demasiado caliente, los alimentos pueden quemarse por fuera y quedar crudos por dentro.',
+            //     style: TextStyle(
+            //       fontSize: 18,
+            //       height: 1.6,
+            //     ),
+            //   ),
+            // ),
+            //     ],
+            //   ),
+            // ),
 
             const SizedBox(height: 20),
           ],
@@ -182,7 +184,10 @@ class CardPreparation extends StatelessWidget {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    // Retroceder paso
+                    pageController.previousPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
                   },
                   icon: const Icon(
                     Icons.arrow_back_ios_new,
@@ -199,7 +204,10 @@ class CardPreparation extends StatelessWidget {
                 height: 40,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Siguiente paso
+                    pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryDark,

@@ -7,7 +7,6 @@ import 'package:recetao/core/theme/app_colors.dart';
 import 'package:recetao/models/recipe.dart';
 
 class FeaturedCard extends StatefulWidget {
-
   final Recipe recipe;
 
   const FeaturedCard({super.key, required this.recipe});
@@ -19,13 +18,14 @@ class FeaturedCard extends StatefulWidget {
 class _FeaturedCardState extends State<FeaturedCard> {
   bool isLoading = true;
 
-   bool stateWishList = false;
+  bool stateWishList = false;
 
   void getWishList() async {
     final repository = FavoritosRepository();
-    
-    final exists = stateWishList = await repository.getStateWishItem(widget.recipe.id);
-    
+
+    final exists =
+        stateWishList = await repository.getStateWishItem(widget.recipe.id);
+
     setState(() {
       stateWishList = exists;
     });
@@ -89,15 +89,20 @@ class _FeaturedCardState extends State<FeaturedCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /// IMAGE
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(22),
-                ),
-                child: Image.network(
-                  widget.recipe.imgUrl,
-                  height: 190,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+              InkWell(
+                onTap: () {
+                  context.push("/food/${widget.recipe.id}");
+                },
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(22),
+                  ),
+                  child: Image.network(
+                    widget.recipe.imgUrl,
+                    height: 190,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
 
@@ -112,12 +117,17 @@ class _FeaturedCardState extends State<FeaturedCard> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            widget.recipe.name,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          InkWell(
+                            onTap: () {
+                              context.push("/food/${widget.recipe.id}");
+                            },
+                            child: Text(
+                              widget.recipe.name,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -163,18 +173,22 @@ class _FeaturedCardState extends State<FeaturedCard> {
                       onTap: () async {
                         final repository = FavoritosRepository();
                         await repository.insertFavorite(
-                            DbFavoritos(idRecipe: widget.recipe.id),
+                          DbFavoritos(idRecipe: widget.recipe.id),
                         );
                       },
                       child: Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: stateWishList ? Colors.grey.shade100 : AppColors.background,
+                          color: stateWishList
+                              ? Colors.grey.shade100
+                              : AppColors.background,
                           shape: BoxShape.circle,
                         ),
-                        child: Icon( 
+                        child: Icon(
                           Icons.favorite_border,
-                          color: stateWishList ? Colors.grey.shade100 : AppColors.primary,
+                          color: stateWishList
+                              ? Colors.grey.shade100
+                              : AppColors.primary,
                           size: 22,
                         ),
                       ),
