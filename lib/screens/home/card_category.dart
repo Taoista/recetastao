@@ -41,14 +41,15 @@ class CardCategory extends StatelessWidget {
           const SizedBox(height: 1),
           SizedBox(
             width: 100,
+            height: 35,
             child: Text(
               nameCategory,
               textAlign: TextAlign.center,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: GoogleFonts.cormorantGaramond(
-                fontSize: 13,
-                fontWeight: FontWeight.w900,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
                 color: AppColors.primaryDark,
               ),
             ),
