@@ -7,6 +7,7 @@ import 'package:recetao/models/recipe.dart';
 import 'package:recetao/screens/category/search_category.dart';
 import 'package:recetao/widgets/card_food_horizontal.dart';
 import 'package:recetao/widgets/main_navigation_bar.dart';
+import 'package:recetao/widgets/not_found.dart';
 import 'package:recetao/widgets/skeleton_card_food_horizontal.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -21,7 +22,7 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-  bool isloading = false;
+  bool isloading = true;
 
   List<dynamic> listCategory = categoryList;
 
@@ -49,7 +50,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       setState(() {
         allRecipes = recipesRequest;
         recipes = recipesRequest;
-        isloading = true;
+        isloading = false;
       });
     } catch (e) {
       print("Error loading recipes: $e");
@@ -89,7 +90,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
               listOriginalRecipes: allRecipes,
             ),
           ),
-          isloading ?
+          isloading ? SkeletonCardFoodHorizontal() : 
+          recipes.isEmpty ? NotFound(keySearch: 'Busqueda',) :
           Expanded(
             child:  ListView.builder(
               itemCount: recipes.length,
@@ -106,7 +108,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 );
               },
             ) 
-          ) : SkeletonCardFoodHorizontal(),
+          )
         ],
       ),
     );

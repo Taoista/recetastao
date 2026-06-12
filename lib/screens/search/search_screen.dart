@@ -3,9 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:recetao/core/network/api_search_recipes.dart';
 import 'package:recetao/core/theme/app_colors.dart';
 import 'package:recetao/models/recipe.dart';
+import 'package:recetao/widgets/not_found.dart';
 import 'package:recetao/widgets/card_food_horizontal.dart';
 import 'package:recetao/widgets/main_navigation_bar.dart';
 import 'package:recetao/widgets/search_main.dart';
+import 'package:recetao/widgets/skeleton_card_food_horizontal.dart';
 
 class SearchScreen extends StatefulWidget {
   static const String routeName = "search_screen";
@@ -20,6 +22,8 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
 
+  bool isLoading = true;
+
   List<Recipe> recipes = [];
 
   // * realiza la peticion para obtener los productos
@@ -29,6 +33,7 @@ class _SearchScreenState extends State<SearchScreen> {
       final recipesFromApi = await api.searchRecipes(widget.keySearch);
       setState(() {
         recipes = recipesFromApi;
+        isLoading = false;
       });
     } catch (e) {
       print("Error fetching recipes: $e");
@@ -61,7 +66,9 @@ class _SearchScreenState extends State<SearchScreen> {
             child: SearchMain(),
           ),
           Expanded(
-            child: ListView.builder(
+            child: isLoading ? const SkeletonCardFoodHorizontal():
+            recipes.isEmpty ? NotFound(keySearch: widget.keySearch):
+            ListView.builder(
               itemCount: recipes.length,
               itemBuilder: (context, index) {
                 final recipe = recipes[index];
